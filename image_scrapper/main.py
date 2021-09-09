@@ -1,171 +1,121 @@
-import requests
-import webbrowser
-import urllib.request
-import os
-import threading
-import time
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+import time
+import os
+import requests
+import pandas as pd
+from bs4 import BeautifulSoup
+from PIL import Image
+import io, hashlib
 
-def download_whole():
-    print("Download entire search result or partial? (y/n) defualt: partial")
-    thread = input()
-    if (thread == 'y'):
-        return True
-    return False
 
-def get_input():
-    print("Enter a keyword")
-    keyword = input()
-    print("Enter a number of " + keyword + " images to get")
-    img_count = input()
-    valid_input = False
-    while (valid_input == False):
-        try:
-            img_count = int(img_count)
-            if (img_count > 1):
-                valid_input = True
-            else:
-                print("Number must be greater than 1")
-                img_count = input()
-        except ValueError:
-            print("That's not an integer!") 
-            img_count = input()      
+def fetch_image_urls(query:str, max_links_to_fetch:int, wd:webdriver, sleep_between_interactions:int=1):
+    def scroll_to_end(wd):
+        wd.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(sleep_between_interactions)    
     
-    return keyword, img_count
+    # build the google query
+    search_url = "https://www.google.com/search?safe=off&site=&tbm=isch&source=hp&q={q}&oq={q}&gs_l=img"
 
-def url_builder(keyword):
-    url = "https://www.google.com/search?q=" + keyword + "&rlz=1C1SQJL_enKR858KR858&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjvyIThp8_qAhUcwosBHb2ZDwAQ_AUoAXoECBgQAw&biw=1920&bih=937"
-    return url
+    # load the page
+    wd.get(search_url.format(q=query))
 
-def get_image_urls(url):
-    # driver = webdriver.Chrome("./chromedriver")
-    driver = webdriver.Chrome("./image_scrapper/chromedriver.exe")
-    driver.get(url)
-    
-    elem = driver.find_element_by_tag_name("body")
+    image_urls = set()
+    image_count = 0
+    results_start = 0
+    while image_count < max_links_to_fetch:
+        scroll_to_end(wd)
 
-    for i in range(60):
-        elem.send_keys(Keys.PAGE_DOWN)
-        time.sleep(0.2)
-    
-    button = driver.find_element_by_xpath('//input[@type="button"]')
-    button.click()
+        # get all image thumbnail results
+        thumbnail_results = wd.find_elements_by_css_selector("img.Q4LuWd")
+        number_results = len(thumbnail_results)
+        
+        print(f"Found: {number_results} search results. Extracting links from {results_start}:{number_results}")
+        
+        for img in thumbnail_results[results_start:number_results]:
+            # try to click every thumbnail such that we can get the real image behind it
+            try:
+                img.click()
+                time.sleep(sleep_between_interactions)
+            except Exception:
+                continue
 
-    for i in range(60):
-        elem.send_keys(Keys.PAGE_DOWN)
-        time.sleep(0.2)
+            # extract image urls    
+            actual_images = wd.find_elements_by_css_selector('img.n3VNCb')
+            for actual_image in actual_images:
+                if actual_image.get_attribute('src') and 'http' in actual_image.get_attribute('src'):
+                    image_urls.add(actual_image.get_attribute('src'))
 
-    print("Reached end of the search result")
+            image_count = len(image_urls)
 
-    photo_grid_boxes = driver.find_elements_by_xpath('//div[@class="bRMDJf islir"]')
+            if len(image_urls) >= max_links_to_fetch:
+                print(f"Found: {len(image_urls)} image links, done!")
+                break
+        else:
+            print("Found:", len(image_urls), "image links, looking for more ...")
+            time.sleep(30)
+            return
+            load_more_button = wd.find_element_by_css_selector(".mye4qd")
+            if load_more_button:
+                wd.execute_script("document.querySelector('.mye4qd').click();")
 
-    image_urls = []
+        # move the result startpoint further down
+        results_start = len(thumbnail_results)
 
-    for box in photo_grid_boxes:
-        try:
-            imgs = box.find_elements_by_tag_name("img")
-            for img in imgs:
-                src = img.get_attribute("src")
-                # Google preloads 20 images as base64
-                if str(src).startswith('data:'):
-                    src = img.get_attribute("data-iurl")
-                image_urls.append(src)
-
-        except Exception:
-            print("Error: System Crashed. Returning saved image urls.")
-            return image_urls
-
-    print("Found " + str(len(image_urls)) + " image urls")
     return image_urls
 
-def make_dir(keyword):
-    dir_path = "./image_folder/" + keyword
-    if not os.path.exists(dir_path):
-        os.makedirs(dir_path)
-    return dir_path
 
-# download function without multithreading
-def download_images(urls, dir_path, keyword, img_count):
-    print("Downloading first " + str(img_count) + " images from " + str(len(urls)) + " urls found")
-    
-    success_count = 0
-    fail_count = 0
 
-    for i in range(len(urls)):
-        if (success_count == img_count):
-            break
 
-        try:
-            file_path = dir_path + "/" + keyword + str(success_count + 1) + ".jpg"
-            # urllib.request.urlretrieve(urls[i], file_path)
-            # second method
-            response = urllib.request.urlopen(urls[i])
-            image = response.read()
-            with open(file_path, "wb") as file:
-                file.write(image)
-            
-            success_count += 1
-        except Exception:
-            fail_count += 1
-    print("Detected " + str(fail_count) + " invalid links")
-    print("Downloaded " + str(success_count) + " images")
 
-    if (success_count < img_count):
-        print("Try searching with synonyms to download more images")
-
-# download function with multithreading
-def download_images_multithread(url, i, dir_path, keyword):
+def persist_image(folder_path:str,url:str):
     try:
-        file_path = dir_path + "/" + keyword + str(i) + ".jpg"
-        response = urllib.request.urlopen(url)
-        image = response.read()
-        with open(file_path, "wb") as file:
-            file.write(image)
-        # urllib.request.urlretrieve(url, file_path)
-    except Exception:
-        return
+        image_content = requests.get(url).content
 
-def set_multithread(urls, dir_path, keyword):
-    threads = list()
-    
-    for i in range(len(urls)):
-        processThread = threading.Thread(target=download_images_multithread, args=(urls[i], i, dir_path, keyword))
-        threads.append(processThread)
-        processThread.start()
-    
-    for thread in threads:
-        thread.join()
-    
-    print("Detected " + str(len(urls) - len(os.listdir(dir_path))) + " invalid urls")
-    print("Downloaded " + str(len(os.listdir(dir_path))) + " images")
-    print("Try searching with synonyms to download more images")
+    except Exception as e:
+        print(f"ERROR - Could not download {url} - {e}")
 
-def rename_files(keyword, path):
-    for count, filename in enumerate(os.listdir(path)):
-        dst = keyword + str(count + 1) + ".jpg"
-        src = path+ "/" + filename 
-        dst = path+ "/" + dst 
-        os.rename(src, dst) 
+    try:
+        image_file = io.BytesIO(image_content)
+        image = Image.open(image_file).convert('RGB')
+        file_path = os.path.join(folder_path,hashlib.sha1(image_content).hexdigest()[:10] + '.jpg')
+        with open(file_path, 'wb') as f:
+            image.save(f, "JPEG", quality=85)
+        print(f"SUCCESS - saved {url} - as {file_path}")
+    except Exception as e:
+        print(f"ERROR - Could not save {url} - {e}")
 
 
-thread = download_whole()
-if (thread == True):
-    print("Enter a keyword")
-    keyword = input()
-else:
-    keyword, img_count = get_input()
 
-start_time = time.time()
 
-url = url_builder(keyword)
-image_urls = get_image_urls(url)
-path = make_dir(keyword)
 
-if (thread == True):
-    set_multithread(image_urls, path, keyword)
-    rename_files(keyword, path)
-else:
-    download_images(image_urls, path, keyword, img_count)
 
-print("---Took %s seconds ---" % (time.time() - start_time))
+def search_and_download(search_term:str,driver_path:str,target_path='./images',number_images=5):
+    target_folder = os.path.join(target_path,'_'.join(search_term.lower().split(' ')))
+
+    if not os.path.exists(target_folder):
+        os.makedirs(target_folder)
+
+    with webdriver.Chrome(executable_path=driver_path) as wd:
+        res = fetch_image_urls(search_term, number_images, wd=wd, sleep_between_interactions=0.5)
+        
+    for elem in res:
+        persist_image(target_folder,elem)
+
+
+
+if __name__ == "__main__":
+    images_to_download = {
+        "Mirabai Chanu": "mirabai_chanu",
+        "Lovlina Borgohain": "lovlina_borgohain",
+        "PV Sindhu": "pv_sindhu",
+        "Ravi Kumar Dahiya": "ravi_kumar_dahiya",
+        "PR Sreejesh": "pr_sreejesh",
+        "Bajrang Punia": "bajrang_punia",
+        "Neeraj Chopra": "neeraj_chopra"
+    }
+
+    driver = "./image_scrapper/chromedriver.exe"
+    lmt = 100
+
+    for query, folder_name in images_to_download.items():
+        search_and_download(query, driver, "./images/"+folder_name, lmt)
