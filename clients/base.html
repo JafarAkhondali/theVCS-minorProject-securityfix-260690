@@ -74,28 +74,16 @@
 
                                 <li onmouseover="all_ml_projects()">
                                     <a href="javascript:;">ML Box<i class="fa fa-chevron-down"></i></a>
-                                    <ul class="sub-menu right" id="ml_box">
+                                    <ul class="sub-menu right" id="ml_box" style="height: 400px; overflow-y: scroll;">
                                     </ul>
                                 </li>
 
                                 <li onmouseover="all_tool_projects()">
                                     <a href="javascript:;">Tool Box<i class="fa fa-chevron-down"></i></a>
-                                    <ul class="sub-menu right" id="tool_box">
+                                    <ul class="sub-menu right" id="tool_box" style="height: 400px; overflow-y: scroll;">
                                     </ul>
                                 </li>
                             </ul>
-                            <div class="dlab-social-icon">
-                                <ul>
-                                    <li><a class="site-button facebook sharp-sm fa fa-facebook"
-                                            href="javascript:void(0);"></a></li>
-                                    <li><a class="site-button twitter sharp-sm fa fa-twitter"
-                                            href="javascript:void(0);"></a></li>
-                                    <li><a class="site-button linkedin sharp-sm fa fa-linkedin"
-                                            href="javascript:void(0);"></a></li>
-                                    <li><a class="site-button instagram sharp-sm fa fa-instagram"
-                                            href="javascript:void(0);"></a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -173,7 +161,6 @@
     <script src="plugins/revolution/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
     <script src="plugins/revolution/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script src="plugins/revolution/revolution/js/extensions/revolution.extension.video.min.js"></script>
-    <script src="./common/option_retriever.js"></script>
     <script src="js/rev.slider.js"></script>
     <script>
         jQuery(document).ready(function () {
@@ -182,6 +169,7 @@
             $('.lazy').Lazy();
         }); /*ready*/
     </script>
+    <script src="../option_retriever.js"></script>
 </body>
 
 </html>

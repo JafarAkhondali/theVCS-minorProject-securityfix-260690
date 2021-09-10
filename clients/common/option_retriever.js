@@ -2,9 +2,9 @@ ml = false;
 tool = false;
 
 function all_ml_projects() {
-    const ele = $('#ml_box');
     if(ml)return;
-
+    const ele = $('#ml_box');
+    
     var url = "http://localhost:5000/all_ml_projects";
 
     $.post(url, {},
@@ -14,7 +14,7 @@ function all_ml_projects() {
                 var li = document.createElement("LI");
                 var a = document.createElement("A");
                 a.innerText = opt;
-                a.href = "./" + page + ".html";
+                a.href = document.location.origin + page;
                 li.append(a);
                 ele.append(li);
             }
@@ -25,8 +25,8 @@ function all_ml_projects() {
 
 
 function all_tool_projects() {
-    const ele = $('#tool_box');
     if(tool)return;
+    const ele = $('#tool_box');
 
     var url = "http://localhost:5000/all_tool_projects";
 
@@ -37,7 +37,7 @@ function all_tool_projects() {
                 var li = document.createElement("LI");
                 var a = document.createElement("A");
                 a.innerText = opt;
-                a.href = "./" + page + ".html";
+                a.href = document.location.origin + page;
                 li.append(a);
                 ele.append(li);
             }
