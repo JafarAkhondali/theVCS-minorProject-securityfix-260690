@@ -151,6 +151,8 @@ I have worked on `olympians_recognizer` and done my work in it
 
 > like I have added my project `olympians_recognizer` from line number 199 to 211, below it i have also added a dummy project you just need to copy it and replace `dummy pic` with the `screenshot` of your project which must have dimensions as `500 X 700` and `link` as the link to your `project app.html` page
 
+> then just `commit` your changes and merge with `master branch`
+
 FOOTNOTE: You can take reference from olympians_recognizer, in master branch.
 
 ---
