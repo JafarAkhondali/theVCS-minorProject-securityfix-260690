@@ -133,16 +133,28 @@ I have worked on `olympians_recognizer` and done my work in it
 
 ----
 
-> 10. After that complete you work in front end (html, css, js). It is highly advised to not use your own css rather use the css provided in template folder. Otherwise it will create a lot of mess, and our website willn't remain responsive.😑
+> 10. You can store the images (static files) in `./clients/projects/project_name`
+
+> ![This is an image](./assets/adding_images_for_frontend.png)
+
+---
+
+> 11. After that complete you work in front end (html, css, js). It is highly advised to not use your own css rather use the css provided in template folder. Otherwise it will create a lot of mess, and our website willn't remain responsive.😑
 
 > Done you work in `server.py` and `util.py` in `./server/projects/project_name`, then just write about your project in README.md and provide your name and linkedin account link as shown
 
 > ![This is an image](./assets/writing_in_readme.png)
 
+> open `./clients/index.html` and add your project into it project section
+
+> ![This is an image](./assets/adding_project_in_readme.png)
+
+> like I have added my project `olympians_recognizer` from line number 199 to 211, below it i have also added a dummy project you just need to copy it and replace `dummy pic` with the `screenshot` of your project which must have dimensions as `500 X 700` and `link` as the link to your `project app.html` page
+
 FOOTNOTE: You can take reference from olympians_recognizer, in master branch.
 
 ---
 
-# 😍CONGRATULATIONS WE HAVE DONE ONE MORE PROJECT😍
+# 😍CONGRATULATIONS ONE MORE PROJECT DONE😍
 
 ---
