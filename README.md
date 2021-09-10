@@ -50,6 +50,8 @@
 
 > 1. Make a new branch and work under it - [Link](https://www.atlassian.com/git/tutorials/using-branches/git-checkout)
 
+---
+
 > 2. To work on your `project` make a `folder` as unique name not used before. Example:
 I have worked on `olympians_recognizer` and done my work in it
 
@@ -83,7 +85,7 @@ I have worked on `olympians_recognizer` and done my work in it
 
 > ![This is an image](./assets/importing_and_registering_in_server.png)
 
---
+---
 
 > 6. Load you model and other data in `./server/util.py` function
 
@@ -137,7 +139,7 @@ I have worked on `olympians_recognizer` and done my work in it
 
 > ![This is an image](./assets/writing_in_readme.png)
 
-FOOTNOTE: You can take reference from olympics_recognizer, in master branch.
+FOOTNOTE: You can take reference from olympians_recognizer, in master branch.
 
 ---
 
