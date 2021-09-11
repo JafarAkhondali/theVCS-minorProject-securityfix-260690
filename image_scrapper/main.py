@@ -105,17 +105,11 @@ def search_and_download(search_term:str,driver_path:str,target_path='./images',n
 
 if __name__ == "__main__":
     images_to_download = {
-        "Mirabai Chanu": "mirabai_chanu",
-        "Lovlina Borgohain": "lovlina_borgohain",
-        "PV Sindhu": "pv_sindhu",
-        "Ravi Kumar Dahiya": "ravi_kumar_dahiya",
-        "PR Sreejesh": "pr_sreejesh",
-        "Bajrang Punia": "bajrang_punia",
-        "Neeraj Chopra": "neeraj_chopra"
+        "toolbox": "tool_box",
     }
 
     driver = "./image_scrapper/chromedriver.exe"
-    lmt = 100
+    lmt = 5
 
     for query, folder_name in images_to_download.items():
-        search_and_download(query, driver, "./images/"+folder_name, lmt)
+        search_and_download(query, driver, "./images/", lmt)
