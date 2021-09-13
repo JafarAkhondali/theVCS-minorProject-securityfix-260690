@@ -41,6 +41,7 @@
     <!-- REVOLUTION SLIDER CSS -->
     <link rel="stylesheet" type="text/css" href="../../plugins/revolution/revolution/css/revolution.min.css">
     <link rel="stylesheet" href="./app.css">
+    <script src="./canvas.js"></script>
 </head>
 
 <body id="bg">
@@ -93,19 +94,31 @@
         <!-- header END -->
 
 
+
+        <!-- Content -->
+
         <div class="section-full bg-white content-inner">
             <div class="container">
-                <!-- Content -->
+                <div class="sort-title clearfix text-center">
+                    <h4>Colors In Image</h4>
+                    <p>Upload Your Image And We Shall Find Atmost 10 Colors From Your Image</p>
+                </div>
+                <div class="container my-5" id="uploader">
+                    <div class="drag-area">
+                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <header>Drag & Drop to Upload File</header>
+                        <span>OR</span>
+                        <button>Browse File</button>
+                        <input type="file" hidden>
+                    </div>
+                </div>
 
 
-                
-
-                
-                <!-- Content END -->
+                <div id="chartContainer" style="height: 300px; width: 100%;"></div>
             </div>
         </div>
 
-
+        <!-- Content END -->
 
 
 
@@ -166,7 +179,8 @@
     <script src="../../plugins/revolution/revolution/js/extensions/revolution.extension.actions.min.js"></script>
     <script src="../../plugins/revolution/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
     <script src="../../plugins/revolution/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script src="../../plugins/revolution/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="../../plugins/revolution/revolution/js/extensions/revolution.extension.layeranimation.min.js">
+    </script>
     <script src="../../plugins/revolution/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
     <script src="../../plugins/revolution/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
     <script src="../../plugins/revolution/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>

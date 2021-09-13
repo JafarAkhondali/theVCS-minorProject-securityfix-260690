@@ -8,6 +8,7 @@ app = Flask(__name__)
 # add all ml projects here
 ml_box = {
     "Olympians Recognizer": "/clients/common/olympians_recognizer/app.html",
+    "Colors In Image": "/clients/common/colorsInImage/app.html",
 }
 
 # add all tool box projects here
@@ -54,6 +55,7 @@ def all_tool_projects():
 ############################## importing other servers below #############################
 
 from projects.olympians_recognizer import server as olympians_recognizer # By Prince Mishra
+from projects.colorsInImage import server as colorsInImage # By Prince Mishra
 
 ############################## importing other servers above #############################
 
@@ -62,6 +64,7 @@ from projects.olympians_recognizer import server as olympians_recognizer # By Pr
 ############################### All projects Below #############################
 
 app.register_blueprint(olympians_recognizer.app) # By Prince Mishra
+app.register_blueprint(colorsInImage.app) # By Prince Mishra
 
 ############################### All projects Above #############################
 

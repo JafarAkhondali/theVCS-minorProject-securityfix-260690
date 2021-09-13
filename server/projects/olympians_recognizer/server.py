@@ -11,7 +11,6 @@ def olympians_recognizer_olympians_name():
 @app.route('/olympians_recognizer_classify_image', methods=['GET', 'POST'])
 def olympians_recognizer_classify_image():
     image_data = request.form['image_data']
-
     response = jsonify(util.classify_image(image_data))
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response

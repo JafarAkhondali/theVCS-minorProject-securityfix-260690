@@ -17,6 +17,7 @@
 > 1. Olympians Recognizer - This is an image recognizing project using `opencv` and `logistic regression` (`svm` also worked well but it used it because it gave me more score). - By [Prince Mishra](https://www.linkedin.com/in/prince-mishra-7379101ab/)
 
 
+> 2. Colors In Image - This project uses Kmeans model to find out different colors in an Image -  By [Prince Mishra](https://www.linkedin.com/in/prince-mishra-7379101ab/)
 
 ---
 
