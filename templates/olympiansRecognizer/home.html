@@ -1,0 +1,347 @@
+{% extends 'olympiansRecognizer/base.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+{% block css %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+    #uploader {
+        margin: 0 50 0 50 px;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+        width: 500px;
+        background: #5256ad;
+    }
+
+    .drag-area {
+        border: 2px dashed #fff;
+        height: 200px;
+        width: 500px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .drag-area.active {
+        border: 2px solid #fff;
+    }
+
+    .drag-area .icon {
+        font-size: 100px;
+        color: #fff;
+    }
+
+    .drag-area header {
+        font-size: 30px;
+        font-weight: 500;
+        color: #fff;
+    }
+
+    .drag-area span {
+        font-size: 25px;
+        font-weight: 500;
+        color: #fff;
+        margin: 10px 0 15px 0;
+    }
+
+    .drag-area button {
+        padding: 10px 25px;
+        font-size: 20px;
+        font-weight: 500;
+        border: none;
+        outline: none;
+        background: #fff;
+        color: #5256ad;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .drag-area img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+</style>
+{%endblock%}
+
+
+
+{% block body%}
+<div class="section-full bg-white content-inner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="sort-title clearfix text-center">
+                    <h4>INDIAN OLMYPIC MEDALIST</h4>
+                </div>
+                <!-- Portfolio Carousel with no margin -->
+                <div class="section-content box-sort-in m-b30 button-example">
+                    <div
+                        class="portfolio-carousel-nogap owl-loaded owl-theme owl-carousel mfp-gallery gallery owl-btn-center-lr owl-btn-1">
+                        <div class="item">
+                            <div class="ow-portfolio">
+                                <div class="ow-portfolio-img dlab-img-overlay1 dlab-img-effect zoom-slow"> <img
+                                        src="{%static 'images/projects/olympians_recognizer/bajrang_punia.png'%}"
+                                        alt="">
+                                </div>
+                                <div class="dlab-title-bx bg-white p-a20 text-center">
+                                    <p class="font-16 text-secondry m-b5">Bajrang Punia</p>
+                                    <div class="dlab-divider margin-0 bg-black"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ow-portfolio">
+                                <div class="ow-portfolio-img dlab-img-overlay1 dlab-img-effect zoom-slow"> <img
+                                        src="{%static 'images/projects/olympians_recognizer/lovlina_borgohain.png'%}"
+                                        alt="">
+                                </div>
+                                <div class="dlab-title-bx bg-white p-a20 text-center">
+                                    <p class="font-16 text-secondry m-b5">Lovlina Borgohain</p>
+                                    <div class="dlab-divider margin-0 bg-black"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ow-portfolio">
+                                <div class="ow-portfolio-img dlab-img-overlay1 dlab-img-effect zoom-slow"> <img
+                                        src="{%static 'images/projects/olympians_recognizer/mirabai_chanu.png'%}"
+                                        alt="">
+                                </div>
+                                <div class="dlab-title-bx bg-white p-a20 text-center">
+                                    <p class="font-16 text-secondry m-b5">Mirabai Chanu</p>
+                                    <div class="dlab-divider margin-0 bg-black"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ow-portfolio">
+                                <div class="ow-portfolio-img dlab-img-overlay1 dlab-img-effect zoom-slow"> <img
+                                        src="{%static 'images/projects/olympians_recognizer/neeraj_chopra.png'%}"
+                                        alt="">
+                                </div>
+                                <div class="dlab-title-bx bg-white p-a20 text-center">
+                                    <p class="font-16 text-secondry m-b5">Neeraj Chopra</p>
+                                    <div class="dlab-divider margin-0 bg-black"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ow-portfolio">
+                                <div class="ow-portfolio-img dlab-img-overlay1 dlab-img-effect zoom-slow"> <img
+                                        src="{%static 'images/projects/olympians_recognizer/pr_sreejesh.png'%}" alt="">
+                                </div>
+                                <div class="dlab-title-bx bg-white p-a20 text-center">
+                                    <p class="font-16 text-secondry m-b5">PR Sreejesh</p>
+                                    <div class="dlab-divider margin-0 bg-black"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ow-portfolio">
+                                <div class="ow-portfolio-img dlab-img-overlay1 dlab-img-effect zoom-slow"> <img
+                                        src="{%static 'images/projects/olympians_recognizer/pv_sindhu.png'%}" alt="">
+                                </div>
+                                <div class="dlab-title-bx bg-white p-a20 text-center">
+                                    <p class="font-16 text-secondry m-b5">PV Sindhu</p>
+                                    <div class="dlab-divider margin-0 bg-black"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ow-portfolio">
+                                <div class="ow-portfolio-img dlab-img-overlay1 dlab-img-effect zoom-slow"> <img
+                                        src="{%static 'images/projects/olympians_recognizer/ravi_kumar_dahiya.png'%}"
+                                        alt="">
+                                </div>
+                                <div class="dlab-title-bx bg-white p-a20 text-center">
+                                    <p class="font-16 text-secondry m-b5">Ravi Kumar Dahiya</p>
+                                    <div class="dlab-divider margin-0 bg-black"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-danger text-center" role="alert" style="display:none;">
+
+</div>
+
+<div class="container my-5" id="uploader">
+    <div class="drag-area">
+        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+        <header>Drag & Drop</header>
+        <span>OR</span>
+        <button>Browse File</button>
+        <input type="file" hidden>
+    </div>
+</div>
+</div>
+
+
+<div class="container" style="display: none;" id="matcher">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <div class="alert alert-success text-center" role="alert" id="most_matched">
+
+                </div>
+                <table class="table check-tbl">
+                    <thead>
+                        <tr>
+                            <th colspan="80%">Athlete's Name</th>
+                            <th>Percent Match</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="alert">
+                            <td class="product-item-name" colspan="80%">Bajrang Punia</td>
+                            <td class="product-item-price" id="bajrang_punia"></td>
+                        </tr>
+                        <tr class="alert">
+                            <td class="product-item-name" colspan="80%">Lovlina Borgohain</td>
+                            <td class="product-item-price" id="lovlina_borgohain"></td>
+                        </tr>
+                        <tr class="alert">
+                            <td class="product-item-name" colspan="80%">Mirabai Chanu</td>
+                            <td class="product-item-price" id="mirabai_chanu"></td>
+                        </tr>
+                        <tr class="alert">
+                            <td class="product-item-name" colspan="80%">Neeraj Chopra</td>
+                            <td class="product-item-price" id="neeraj_chopra"></td>
+                        </tr>
+                        <tr class="alert">
+                            <td class="product-item-name" colspan="80%">PR Sreejesh</td>
+                            <td class="product-item-price" id="pr_sreejesh"></td>
+                        </tr>
+                        <tr class="alert">
+                            <td class="product-item-name" colspan="80%">PV Sindhu</td>
+                            <td class="product-item-price" id="pv_sindhu"></td>
+                        </tr>
+                        <tr class="alert">
+                            <td class="product-item-name" colspan="80%">Ravi Kumar Dahiya</td>
+                            <td class="product-item-price" id="ravi_kumar_dahiya"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Content END -->
+{%endblock%}
+
+
+
+{% block script %}
+
+<script>
+    //selecting all required elements
+    const dropArea = document.querySelector(".drag-area"),
+        dragText = dropArea.querySelector("header"),
+        button = dropArea.querySelector("button"),
+        input = dropArea.querySelector("input");
+    let file; //this is a global variable and we'll use it inside multiple functions
+    button.onclick = () => {
+        input.click(); //if user click on the button then the input also clicked
+        $(".alert")[0].style.display = "none";
+        $(".alert")[0].innerText = ""
+        $("#matcher")[0].style.display = "none"
+    }
+    input.addEventListener("change", function () {
+        //getting user select file and [0] this means if user select multiple files then we'll select only the first one
+        file = this.files[0];
+        dropArea.classList.add("active");
+        showFile(); //calling function
+    });
+    //If user Drag File Over DropArea
+    dropArea.addEventListener("dragover", (event) => {
+        event.preventDefault(); //preventing from default behaviour
+        dropArea.classList.add("active");
+        dragText.textContent = "Release to Upload File";
+    });
+    //If user leave dragged File from DropArea
+    dropArea.addEventListener("dragleave", () => {
+        dropArea.classList.remove("active");
+        dragText.textContent = "Drag & Drop to Upload File";
+    });
+    //If user drop File on DropArea
+    dropArea.addEventListener("drop", (event) => {
+        event.preventDefault(); //preventing from default behaviour
+        //getting user select file and [0] this means if user select multiple files then we'll select only the first one
+        file = event.dataTransfer.files[0];
+        showFile(); //calling function
+    });
+
+    function showFile() {
+        let fileType = file.type; //getting selected file type
+        let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
+        if (validExtensions.includes(fileType)) {
+            let fileReader = new FileReader();
+            fileReader.onload = () => {
+                // making post request
+
+                let fileURL = fileReader.result;
+                var _url = "{%url 'classifyImage'%}";
+
+                $.post(_url, {
+                        image_data: fileURL,
+                        csrfmiddlewaretoken: '{{csrf_token}}',
+                    },
+                    function (data, status) {
+
+                        if (!data || data.length == 0) {
+                            return;
+                        }
+                        
+                        data = JSON.parse(data)
+
+                        if (data["err"]) {
+                            const ele = $(".alert")[0];
+                            ele.style.display = "block"
+                            ele.innerText = data["err"]
+                            return;
+                        }
+
+                        $("#most_matched")[0].innerText = (data["class"] + " most matched athlete")
+                        $("#matcher")[0].style.display = "block"
+
+                        lst = ["bajrang_punia", "lovlina_borgohain", "mirabai_chanu", "neeraj_chopra",
+                            "pr_sreejesh", "pv_sindhu", "ravi_kumar_dahiya"
+                        ];
+
+                        const sz = lst.length;
+
+                        for (let index = 0; index < sz; index++) {
+                            const element = document.getElementById(lst[index]);
+                            const prob = data["class_probability"][index];
+                            element.innerText = prob;
+                        }
+                    })
+            }
+
+            fileReader.readAsDataURL(file);
+        } else {
+            alert("This is not an Image File!");
+            dropArea.classList.remove("active");
+            dragText.textContent = "Drag & Drop to Upload File";
+        }
+    }
+</script>
+
+{%endblock%}
