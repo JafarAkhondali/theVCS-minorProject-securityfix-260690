@@ -7,4 +7,5 @@ urlpatterns = [
     path('apis/', include('apis.urls')),
     path('olympiansRecognizer/', include('olympiansRecognizer.urls')),
     path('colorsInImage/', include('colorsInImage.urls')),
+    path('homePricePrediction/', include('homePricePrediction.urls')),
 ]

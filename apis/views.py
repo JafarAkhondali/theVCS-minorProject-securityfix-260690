@@ -9,6 +9,7 @@ import json
 ml_box = {
     "Olympians Recognizer": "/olympiansRecognizer",
     "Colors In Image": "/colorsInImage",
+    "Home Price Prediction": "/homePricePrediction",
 }
 
 # add all tool box projects here

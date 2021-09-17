@@ -1,0 +1,294 @@
+{% extends 'homePricePrediction/base.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+{% block css %}{%endblock%}
+
+
+
+{% block body%}
+
+<!-- Content -->
+<div class="page-content bg-white">
+    <!-- inner page banner END -->
+    <div class="bg-white lightgallery" id="lightgallery">
+        <!-- Left & right section start -->
+        <div class="section-full bg-white content-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sort-title clearfix text-center">
+                            <h4>Plots On Dataset</h4>
+                        </div>
+                        <!-- Images overlay on hover -->
+                        <div class="section-content box-sort-in button-example p-b0">
+                            <div class="row">
+
+                                <div class="col-lg-3 col-md-6 col-sm-12 m-b15">
+                                    <div class="dlab-box">
+                                        <div class="dlab-media dlab-img-overlay11 dlab-img-effect zoom"> <img
+                                                src="{%static 'images/homePricePrediction/homePriceDistribution1.png'%}"
+                                                alt="" style="height: 160px; width: 200px;">
+                                            <div class="overlay-bx">
+                                                <div class="overlay-icon">
+                                                    <span
+                                                        data-exthumbimage="{%static 'images/homePricePrediction/homePriceDistribution1.png'%}"
+                                                        data-src="{%static 'images/homePricePrediction/homePriceDistribution1.png'%}"
+                                                        class="check-km" title="Histogram Of Raw Dataset">
+                                                        <i class="fa fa-picture-o icon-bx-xs"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dlab-title-bx m-t10">
+                                            <h4 class="margin-0">Raw Dataset</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-3 col-md-6 col-sm-12 m-b15">
+                                    <div class="dlab-box">
+                                        <div class="dlab-media dlab-img-overlay11 dlab-img-effect zoom"> <img
+                                                src="{%static 'images/homePricePrediction/homePriceDistribution2.png'%}"
+                                                alt="" style="height: 160px; width: 200px;">
+                                            <div class="overlay-bx">
+                                                <div class="overlay-icon">
+                                                    <span
+                                                        data-exthumbimage="{%static 'images/homePricePrediction/homePriceDistribution1.png'%}"
+                                                        data-src="{%static 'images/homePricePrediction/homePriceDistribution1.png'%}"
+                                                        class="check-km" title="Scattered Plot Of Raw Dataset">
+                                                        <i class="fa fa-picture-o icon-bx-xs"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dlab-title-bx m-t10">
+                                            <h4 class="margin-0">Raw Dataset</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 col-sm-12 m-b15">
+                                    <div class="dlab-box">
+                                        <div class="dlab-media dlab-img-overlay11 dlab-img-effect zoom"> <img
+                                                src="{%static 'images/homePricePrediction/homePriceDistribution3.png'%}"
+                                                alt="" style="height: 160px; width: 200px;">
+                                            <div class="overlay-bx">
+                                                <div class="overlay-icon">
+                                                    <span
+                                                        data-exthumbimage="{%static 'images/homePricePrediction/homePriceDistribution1.png'%}"
+                                                        data-src="{%static 'images/homePricePrediction/homePriceDistribution1.png'%}"
+                                                        class="check-km" title="Histogram Of Processed Dataset">
+                                                        <i class="fa fa-picture-o icon-bx-xs"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dlab-title-bx m-t10">
+                                            <h4 class="margin-0">Processed Dataset</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 col-sm-12 m-b15">
+                                    <div class="dlab-box">
+                                        <div class="dlab-media dlab-img-overlay11 dlab-img-effect zoom"> <img
+                                                src="{%static 'images/homePricePrediction/homePriceDistribution4.png'%}"
+                                                alt="" style="height: 160px; width: 200px;">
+                                            <div class="overlay-bx">
+                                                <div class="overlay-icon">
+                                                    <span
+                                                        data-exthumbimage="{%static 'images/homePricePrediction/homePriceDistribution1.png'%}"
+                                                        data-src="{%static 'images/homePricePrediction/homePriceDistribution1.png'%}"
+                                                        class="check-km" title="Scattered Plot Of Processed Dataset">
+                                                        <i class="fa fa-picture-o icon-bx-xs"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dlab-title-bx m-t10">
+                                            <h4 class="margin-0">Processed Dataset</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- contact area -->
+    <div class="section-full content-inner shop-account">
+        <!-- Product -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="font-weight-700 m-t0 m-b40">Get Your Home Price</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 m-b30">
+                    <div class="p-a30 border-1  max-w500 m-auto">
+                        <div class="tab-content">
+                            <form id="login" class="tab-pane active" onsubmit="return getPrice()">
+
+                                <div class="form-group">
+                                    <label class="font-weight-700">Is Your Home Under Construction ? </label>
+                                    <select name="underConstruction" required="" class="form-control">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="font-weight-700"> Is Your Home RERA Certified ? </label>
+                                    <select name="rera" required="" class="form-control">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="font-weight-700"> No Of Rooms ? </label>
+                                    <input name="bhk" required="" type="number" class="form-control" min="1"
+                                        placeholder="tell the no of rooms in your home">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="font-weight-700"> Type ? </label>
+                                    <select name="bhkOrRk" required="" class="form-control">
+                                        <option value="1">BHK</option>
+                                        <option value="0">RK</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="font-weight-700"> Area Of Your House In Square Feet ? </label>
+                                    <input name="sqFt" required="" type="text" class="form-control" min="1"
+                                        placeholder="Tell the area of your home in square feet?">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="font-weight-700"> Are You Ready To Move ? </label>
+                                    <select name="readyToMove" required="" class="form-control">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="font-weight-700"> Is It Resaled ? </label>
+                                    <select name="resaled" required="" class="form-control">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="font-weight-700"> Longitude Of Your House ? </label>
+                                    <input name="longitude" required="" type="number" class="form-control" min="1"
+                                        placeholder="Tell The Longitude of Your House?" min="-180" max="180">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="font-weight-700"> Latitude Of Your House ? </label>
+                                    <input name="latitude" required="" type="number" class="form-control" min="1"
+                                        placeholder="Tell The Latitude of Your House?" min="-90" max="90">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="font-weight-700"> From Whom You Are Buying Home ? </label>
+                                    <select name="postedBy" required="" class="form-control">
+                                        <option value="Dealer">Dealer</option>
+                                        <option value="Owner">Owner</option>
+                                        <option value="Builder">Builder</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="font-weight-700"> Location ? </label>
+                                    <select name="address" required="" class="form-control" id="address">
+                                    </select>
+                                </div>
+
+                                <div class="text-center m-t15">
+                                    <button class="site-button button-lg radius-no outline outline-2">Predict</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="alert alert-success mt-5 text-center" role="alert" id="result" style="display:none">
+                            This is a success alert—check it out!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product END -->
+    </div>
+
+</div>
+<!-- Content END-->
+
+{%endblock%}
+
+
+
+{% block script %}
+
+<script>
+    $(document).ready(function () {
+        const url = "{%url 'allAddresses'%}";
+
+        $.post(url, {
+            csrfmiddlewaretoken: '{{csrf_token}}',
+        }, function (data, status) {
+            data = JSON.parse(data)
+            data = data["address"]
+            html = ""
+
+            for (let index = 0; index < data.length; index++) {
+                const element = data[index];
+                html += `<option value="` + element + `">` + element + `</option>`
+            }
+
+            $("#address")[0].innerHTML = html
+        })
+    })
+
+    function getPrice()
+    {
+        $("#result")[0].style.display = "none";
+        const url = "{%url 'getPrice'%}";
+        
+        $.post(url, {
+            underConstruction: document.getElementsByName("underConstruction")[0].value,
+            rera: document.getElementsByName("rera")[0].value,
+            bhk: document.getElementsByName("bhk")[0].value,
+            bhkOrRk: document.getElementsByName("bhkOrRk")[0].value,
+            sqFt: document.getElementsByName("sqFt")[0].value,
+            readyToMove: document.getElementsByName("readyToMove")[0].value,
+            resaled: document.getElementsByName("resaled")[0].value,
+            longitude: document.getElementsByName("longitude")[0].value,
+            latitude: document.getElementsByName("latitude")[0].value,
+            postedBy: document.getElementsByName("postedBy")[0].value,
+            address: document.getElementsByName("address")[0].value,
+            csrfmiddlewaretoken: '{{csrf_token}}',
+        }, function (data, status) {
+            data = JSON.parse(data)
+            $("#result")[0].style.display = "block";
+            $("#result")[0].innerText = "";
+            $("#result")[0].innerText = data["result"];
+        })
+
+        return false;
+    }
+</script>
+
+{%endblock%}
