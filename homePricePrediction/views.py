@@ -37,7 +37,7 @@ def predictPrice(postedBy, underConstruction, rera, bhk, bhk_or_rk, sqrtFt, read
     load_saved_data()
     x = np.zeros(len(X.columns))
 
-    print(postedBy, underConstruction, rera, bhk, bhk_or_rk, sqrtFt, readyToMove, resale, longitude, latitude, address)
+    # print(postedBy, underConstruction, rera, bhk, bhk_or_rk, sqrtFt, readyToMove, resale, longitude, latitude, address)
 
     # filling data
     x[0] = underConstruction
@@ -65,7 +65,7 @@ def predictPrice(postedBy, underConstruction, rera, bhk, bhk_or_rk, sqrtFt, read
     if res < 0:
         return json.dumps({"result": "No such house exists"})
 
-        return json.dumps({"result": "Estimated Price Is {:.2f} Lakh Rupees".format(res)})
+    return json.dumps({"result": "Estimated Price Is {:.2f} Lakh Rupees".format(res)})
 
 
 
