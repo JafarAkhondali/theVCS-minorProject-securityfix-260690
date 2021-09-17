@@ -37,7 +37,6 @@ def predictPrice(postedBy, underConstruction, rera, bhk, bhk_or_rk, sqrtFt, read
     load_saved_data()
     x = np.zeros(len(X.columns))
 
-    # print(postedBy, underConstruction, rera, bhk, bhk_or_rk, sqrtFt, readyToMove, resale, longitude, latitude, address)
 
     # filling data
     x[0] = underConstruction
