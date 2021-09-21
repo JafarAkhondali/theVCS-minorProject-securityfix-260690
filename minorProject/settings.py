@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'apis.apps.ApisConfig',
     'olympiansRecognizer.apps.OlympiansrecognizerConfig',
     'colorsInImage.apps.ColorsinimageConfig',
+    'jsonConvertor.apps.JsonconvertorConfig',
 ]
 
 MIDDLEWARE = [

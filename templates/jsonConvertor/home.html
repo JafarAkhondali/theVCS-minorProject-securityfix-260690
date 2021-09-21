@@ -1,0 +1,110 @@
+{% extends 'jsonConvertor/base.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+{% block css %}
+<style>
+    @media only screen and (max-width: 770px) {
+        .imageMedia {
+            display: none;
+        }
+    }
+</style>
+{%endblock%}
+
+
+
+{% block body%}
+<div class="page-content bg-white">
+    <!--Team--->
+    <div class="section-full bg-white content-inner">
+        <div class="alert alert-success alert-dismissible fade show mt-0" role="alert" style="height:177px;width:100%">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="imageMedia"
+                        style="border-radius: 50%;height: 150px; width:150px ; background-color: white;">
+                        <img class="ml-4 mt-3 " src="{% static 'images/projects/jsonConvertor/image1.png'%}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6 text-center mt-5">
+                    <h2 class="title">JSON Convertor</h2>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="imageMedia"
+                        style="border-radius: 50%;height: 150px; width:150px ; background-color: white;">
+                        <img class="ml-4 mt-4" style="height: 90px; width: 110px;"
+                            src="{% static 'images/projects/jsonConvertor/image2.png'%}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid  ">
+
+            <div class="row dlab-team10-area">
+                <div class="col-md-2">
+                    <div class="section-head text-black text-center">
+                        <h3 class="title text-success">Tag Option</h3>
+                    </div>
+                    <div class="container-fluid" style="border:2px solid black; border-radius:5px;">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault1"
+                                name=removepunc>
+                            <label class="form-check-label" for="flexSwitchCheckDefault1">Remove punctuation</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2" name="capital">
+                            <label class="form-check-label" for="flexSwitchCheckDefault2">Change to UPPER CASE</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault3" name="endline">
+                            <label class="form-check-label" for="flexSwitchCheckDefault3">Remove lines</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault4"
+                                name="extraspace">
+                            <label class="form-check-label" for="flexSwitchCheckDefault4">Remove extra space</label>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success my-5 "
+                                onclick="checkresult('{{result}}')">Analysised
+                                text</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="container-fluid">
+
+                        <form action="" method="get">
+                            <div class="row">
+                                <div class="mb-3 col-md-6 ">
+                                    <div class="section-head text-black text-center">
+                                        <h3 class="title text-success">Enter Your Text</h3>
+                                    </div>
+                                    <textarea name="text" class="form-control" id="input" rows="20"
+                                        style="border:2px solid black; border-radius: 5px;  box-shadow: 10px 10px 5px grey;"></textarea>
+                                </div>
+                                <div class="mb-3 col-md-6 ">
+                                    <div class="section-head text-black text-center">
+                                        <h3 class="title text-success">JSON</h3>
+                                    </div>
+                                    <textarea name="text" class="form-control" id="output" rows="20"
+                                        style="border:2px solid black; border-radius: 5px;  box-shadow: 10px 10px 5px grey;"></textarea>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Team End--->
+</div>
+{%endblock%}
+
+
+
+{% block script %}{%endblock%}

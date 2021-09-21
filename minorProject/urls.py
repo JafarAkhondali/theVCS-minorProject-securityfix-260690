@@ -8,4 +8,5 @@ urlpatterns = [
     path('olympiansRecognizer/', include('olympiansRecognizer.urls')),
     path('colorsInImage/', include('colorsInImage.urls')),
     path('homePricePrediction/', include('homePricePrediction.urls')),
+    path('jsonConvertor/', include('jsonConvertor.urls')),
 ]
