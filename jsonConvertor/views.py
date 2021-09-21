@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 import json
+import string 
 
 # Create your views here.
 
@@ -14,12 +15,14 @@ def home(request):
 def punctuationRemover(request):
     if request.method == "POST":
         text = request.POST.get("text")
-        punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+        punctuations = string.punctuation
+        result = ""
 
-        for x in text.lower():
-            if x in punctuations:
-                text = text.replace(x, "")
-
-        return HttpResponse(json.dumps({"text": text}))
+        for i in text:
+            if i in punctuations or (len(result) and result[-1] == " " and i == " "):
+                continue
+            result += i
+        print(result)
+        return HttpResponse(json.dumps({"result": result}))
     else:
         return HttpResponse(json.dumps({"status": "failed"}))
