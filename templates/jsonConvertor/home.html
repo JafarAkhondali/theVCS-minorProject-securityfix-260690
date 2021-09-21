@@ -11,6 +11,22 @@
             display: none;
         }
     }
+
+    .textShow {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        height: 570px;
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .content {
+        position: absolute;
+        top: 40%;
+        left: 20%;
+        border: green solid 1px;
+    }
 </style>
 {%endblock%}
 
@@ -29,7 +45,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 text-center mt-5">
-                    <h2 class="title">JSON Convertor</h2>
+                    <h2 class="title">Text Processor</h2>
                 </div>
                 <div class="col-md-3 ">
                     <div class="imageMedia"
@@ -40,63 +56,70 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid  ">
+        <div class="container-fluid">
 
             <div class="row dlab-team10-area">
-                <div class="col-md-2">
-                    <div class="section-head text-black text-center">
-                        <h3 class="title text-success">Tag Option</h3>
-                    </div>
-                    <div class="container-fluid" style="border:2px solid black; border-radius:5px;">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault1"
-                                name=removepunc>
-                            <label class="form-check-label" for="flexSwitchCheckDefault1">Remove punctuation</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2" name="capital">
-                            <label class="form-check-label" for="flexSwitchCheckDefault2">Change to UPPER CASE</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault3" name="endline">
-                            <label class="form-check-label" for="flexSwitchCheckDefault3">Remove lines</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault4"
-                                name="extraspace">
-                            <label class="form-check-label" for="flexSwitchCheckDefault4">Remove extra space</label>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-success my-5 "
-                                onclick="checkresult('{{result}}')">Analysised
-                                text</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <div class="container-fluid">
+                <div class="container-fluid">
 
-                        <form action="" method="get">
-                            <div class="row">
-                                <div class="mb-3 col-md-6 ">
-                                    <div class="section-head text-black text-center">
-                                        <h3 class="title text-success">Enter Your Text</h3>
-                                    </div>
-                                    <textarea name="text" class="form-control" id="input" rows="20"
-                                        style="border:2px solid black; border-radius: 5px;  box-shadow: 10px 10px 5px grey;"></textarea>
+                    <form action="" method="get">
+                        <div class="row">
+
+                            <div class="mt-5 col-md-4">
+                                <div class="section-head text-black text-center">
+                                    <h3 class="title text-success">Enter Text</h3>
                                 </div>
-                                <div class="mb-3 col-md-6 ">
-                                    <div class="section-head text-black text-center">
-                                        <h3 class="title text-success">JSON</h3>
+                                <div class="textShow" id="input"></div>
+                            </div>
+
+                            <div class="col-md-4 mt-5">
+                                <div class="section-head text-black text-center">
+                                    <h3 class="title text-success">Select Option</h3>
+                                </div>
+                                <div class="section-full bg-white content-inner overlay-black-dark bg-img-fix text-white"
+                                    style='background-image:url(/static/images/projects/jsonConvertor/bg.jpg);'>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div
+                                                    class="section-content box-sort-in m-b10 p-b0 button-example m-b30 ">
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-lg-12">
+                                                            <ul class="list-box" style="list-style-type: none;">
+                                                                <li>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            id="punctuationRemover">
+                                                                        <label class="form-check-label"
+                                                                            for="punctuationRemover">
+                                                                            Punctuation Remover
+                                                                        </label>
+                                                                    </div>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="section-content box-sort-in  button-example m-b30 text-center">
+                                            <button class="site-button button-lg green radius-xl  m-r15" type="button"
+                                                onclick="processText()">Process</button>
+                                        </div>
                                     </div>
-                                    <textarea name="text" class="form-control" id="output" rows="20"
-                                        style="border:2px solid black; border-radius: 5px;  box-shadow: 10px 10px 5px grey;"></textarea>
                                 </div>
                             </div>
 
+                            <div class="mt-5 col-md-4 mb-5">
+                                <div class="section-head text-black text-center">
+                                    <h3 class="title text-success">Processed</h3>
+                                </div>
+                                <div class="textShow" id="output"></div>
+                            </div>
 
-                        </form>
-                    </div>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -106,5 +129,47 @@
 {%endblock%}
 
 
+{% block script %}
+<script src="{%static 'js/ace/ace.js'%}"></script>
+<script>
+    $(document).ready(function () {
+        var editor;
+        $('.textShow').each(function (index) {
+            editor = ace.edit(this);
+            editor.autoIndent(true);
+            editor.setTheme("ace/theme/dracula");
+            const nmode = "ace/mode/tex";
+            editor.session.setMode(nmode);
+        });
+        editor.setReadOnly(true);
+    })
 
-{% block script %}{%endblock%}
+    function processText() {
+        var editor = ace.edit("input");
+        var text = editor.getSession().getValue();
+        editor = ace.edit("output");
+
+        const options = {
+            "punctuationRemover": "{%url 'punctuationRemover'%}",
+        }
+
+        for (const key in options) {
+
+            if ($("#" + key).prop("checked")) {
+                const url = options[key];
+                
+                $.post(url, {
+                    text: text,
+                    csrfmiddlewaretoken: '{{csrf_token}}',
+                }, function (data, status) {
+                    if (!data || data.length == 0) return;
+                    data = JSON.parse(data)
+                    console.log(data);
+                    text = data["text"]
+                    editor.session.insert(editor.getCursorPosition(), text)
+                })
+            }
+        }
+    }
+</script>
+{%endblock%}
