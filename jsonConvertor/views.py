@@ -15,39 +15,33 @@ def home(request):
 def punctuationRemover(request):
     if request.method == "POST":
         intext= request.POST.get('text','no text enter')
-        repunc=request.GET.get('removepunc','off')
-        upercase=request.GET.get('capital','off')
-        endline=request.GET.get('endline','off')
-        extraspace=request.GET.get('extraspace','off')
-
-        analysed=""
+        
         result=intext
 
-        if repunc=='on':
-            analysed=""
-            for char in result:
-                if char not in string.punctuation:
-                    analysed=analysed+char
-            result=analysed
+        analysed=""
+        for char in result:
+            if char not in string.punctuation:
+                analysed=analysed+char
+        result=analysed
 
-        if upercase=="on":
-            analysed=""
-            analysed=analysed+result.upper()
-            result=analysed
+      
+        
+        return HttpResponse(json.dumps({"result": result}))
+    else:
+        return HttpResponse(json.dumps({"status": "failed"}))
 
-        if endline=="on":
-            analysed=""
-            for char in result:
-                if char!="\n" and char!="\r":
-                    analysed=analysed+char
-            result=analysed
+def toupperconvertor(request):
+    if request.method == "POST":
+        intext= request.POST.get('text','no text enter')
+        
+        result=intext
 
-        if extraspace=="on":
-            analysed=""
-            for index,char in enumerate(result):
-                if not(result[index]==" "and result[index+1]==" "):
-                    analysed=analysed+char
-            result=analysed
+        analysed=""
+        analysed=analysed+intext.upper()
+        result="on"
+        result=analysed
+
+      
         
         return HttpResponse(json.dumps({"result": result}))
     else:
