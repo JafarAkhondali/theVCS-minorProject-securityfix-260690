@@ -88,9 +88,9 @@
                                                                 <li>
                                                                     <div class="form-check">
                                                                         <input class="form-check-input" type="checkbox"
-                                                                            id="punctuationRemover" name="punctuationremover">
+                                                                            id="PunctuationRemover">
                                                                         <label class="form-check-label"
-                                                                            for="punctuationRemover">
+                                                                            for="PunctuationRemover">
                                                                             Punctuation Remover
                                                                         </label>
                                                                     </div>
@@ -101,9 +101,9 @@
                                                                 <li>
                                                                     <div class="form-check">
                                                                         <input class="form-check-input" type="checkbox"
-                                                                            id="toupperconvertor" name="toupperconvertor">
+                                                                            id="ToUpperConvertor">
                                                                         <label class="form-check-label"
-                                                                            for="toupperconvertor">
+                                                                            for="ToUpperConvertor">
                                                                             To Upper Convertor 
                                                                         </label>
                                                                     </div>
@@ -114,9 +114,9 @@
                                                                 <li>
                                                                     <div class="form-check">
                                                                         <input class="form-check-input" type="checkbox"
-                                                                            id="lineRemover" name="lineremover">
+                                                                            id="LineRemover">
                                                                         <label class="form-check-label"
-                                                                            for="lineRemover">
+                                                                            for="LineRemover">
                                                                             Line Remover
                                                                         </label>
                                                                     </div>
@@ -127,9 +127,9 @@
                                                                 <li>
                                                                     <div class="form-check">
                                                                         <input class="form-check-input" type="checkbox"
-                                                                            id="extraSpaceRemover" name="extraspaceremover">
+                                                                            id="ExtraSpaceRemover">
                                                                         <label class="form-check-label"
-                                                                            for="extraSpaceRemover">
+                                                                            for="ExtraSpaceRemover">
                                                                             Extra Space Remover
                                                                         </label>
                                                                     </div>
@@ -140,9 +140,9 @@
                                                                 <li>
                                                                     <div class="form-check">
                                                                         <input class="form-check-input" type="checkbox"
-                                                                            id="jsonConvertor" name="jsonconvertor">
+                                                                            id="JSONconvertor">
                                                                         <label class="form-check-label"
-                                                                            for="jsonConvertor">
+                                                                            for="JSONconvertor">
                                                                             JSON Convertor
                                                                         </label>
                                                                     </div>
@@ -208,8 +208,11 @@
         editor = ace.edit("output");
 
         const options = {
-            "punctuationRemover": "{%url 'punctuationRemover'%}",
-            "toupperconvertor": "{%url 'toupperconvertor'%}",
+            "PunctuationRemover": "{%url 'PunctuationRemover'%}",
+            "ToUpperConvertor": "{%url 'ToUpperConvertor'%}",
+            "LineRemover": "{%url 'LineRemover'%}",
+            "ExtraSpaceRemover": "{%url 'ExtraSpaceRemover'%}",
+            "JSONconvertor": "{%url 'JSONconvertor'%}",
             
         }
 
