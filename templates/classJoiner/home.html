@@ -1,0 +1,261 @@
+{% extends 'classJoiner/base.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+{% block css %}
+
+<style>
+    /* .group-box{
+        border:2px solid black ;
+    } */
+    #showdate,
+    #showtime,
+    #showday {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #cbbfc3;
+    }
+
+    .card-top {
+        border: 1px solid grey;
+        font: 34px;
+        border-radius: 4px;
+        background: #c7bdb2;
+
+    }
+
+    .card-top h1 {
+        font-family: 'Aclonica';
+    }
+
+    .card-left {
+        border: 1px double grey;
+        border-radius: 5px;
+        background: #f4a795;
+    }
+
+    .card-right-1 {
+        display: flex;
+        align-items: center;
+        height: 70px;
+
+    }
+
+    .card-right-2 {
+        background: rgb(110 37 115);
+        color: rgb(224 218 218);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 180px;
+    }
+
+    .card-right-3 {
+        /* border: 2px solid blue; */
+        display: flex;
+        justify-content: center;
+        height: 50px;
+        /* align-items: center; */
+ 
+    }
+
+    .outer-card {
+        background: rgb(235 230 236);
+        border: 1px double grey;
+        border-radius: 4px;
+        box-shadow:
+            0 1px 1px hsl(0deg 0% 0% / 0.075),
+            0 2px 2px hsl(0deg 0% 0% / 0.075),
+            0 4px 4px hsl(0deg 0% 0% / 0.075),
+            0 8px 8px hsl(0deg 0% 0% / 0.075),
+            0 16px 16px hsl(0deg 0% 0% / 0.075);
+    }
+</style>
+{%endblock%}
+
+
+
+{% block body%}
+<div class="page-content bg-white">
+    <!--Team--->
+    <div class="section-full bg-white content-inner">
+
+        <div class="container outer-card">
+
+            <div class="group-box">
+                <div class="container card-top my-2">
+                    <h1 class=" row justify-content-center text-align-center text-center align-middle mb-4 animate"
+                        data-toggle="animation" data-animation="fadeUp" data-animation-order="1"
+                        data-animation-trigger="load">
+                        class Joiner
+                    </h1>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 mx-2 my-2 card-left">
+                            <aside class="side-bar shop-categories ">
+                                <div class="widget recent-posts-entry">
+                                    <div class="dlab-accordion advanced-search toggle" id="accordion1">
+                                        <div class="panel">
+                                            <div class="acod-head">
+                                                <h5 class="acod-title">
+                                                    <a data-toggle="collapse" href="#categories">
+                                                        GROUP
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="categories" class="acod-body collapse show ">
+                                                <div class="acod-content">
+                                                    <div class="widget widget_services">
+                                                        <input class="form-check-input" type="radio" name="group"
+                                                            value="G1" id="G1" checked onclick="getclass()">
+                                                        <label class="form-check-label" for="G1">
+                                                            G1
+                                                        </label>
+
+                                                        <input class="form-check-input" type="radio" name="group"
+                                                            value="G2" id="G2" onclick="getclass()">
+                                                        <label class="form-check-label" for="G2">
+                                                            G2
+                                                        </label>
+                                                        <input class="form-check-input" type="radio" name="group"
+                                                            value="G3" id="G3" onclick="getclass()">
+                                                        <label class="form-check-label" for="G3">
+                                                            G3
+                                                        </label>
+                                                        <input class="form-check-input" type="radio" name="group"
+                                                            value="G4" id="G4" onclick="getclass()">
+                                                        <label class="form-check-label" for="G4">
+                                                            G4
+                                                        </label>
+                                                        <!-- <button type="button" onclick="group()">
+                                                        submit
+                                                    </button> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+
+                        <div class=" col-md-9 mx-2 my-2 ">
+                            <div class="card text-center">
+                                <div class="card-header" style="background: #201c17;">
+                                    <div class="row text-center card-right-1 align-middle">
+                                        <div class="col-md-4" id="showday">
+                                            <!-- <h2 ></h2> -->
+                                        </div>
+                                        <div class="col-md-4" id="showdate">
+                                            <!-- <h3 ></h3> -->
+                                        </div>
+                                        <div class="col-md-4" id="showtime">
+                                            <!-- <h3 ></h3> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body card-right-2" style="background: #7f4f55; ">
+
+                                    <h5 class="card-title" id="group" style="color: rgb(236 197 55);"></h5>
+                                    <h5 class="card-title" id="teacher" style="color: rgb(236 197 55);"></h5>
+                                    <h5 class="card-title" id="subject" style="color: rgb(236 197 55);"></h5>
+                                </div>
+
+
+                                <p class="text-center mb-0 animate card-right-3" data-toggle="animation"
+                                    data-animation="fadeUp" data-animation-order="3" data-animation-trigger="load">
+
+                                    <button id="class-btn" class="btn btn-outline-warning text-black"><a href=""
+                                            target="_blank" id="link">
+                                            Join now
+                                        </a></button>
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--Team End--->
+</div>
+{%endblock%}
+
+
+{% block script %}
+<script src="{%static 'js/ace/ace.js'%}"></script>
+<script>
+    setInterval(() => {
+        const d = new Date();
+        const day = ["sunday", "Monday", "Tuesday", "Wednesday", "Thuresday", "Friday", "Saturday"];
+        let hour = d.getHours();
+        if (hour >= 13) {
+            hour = hour % 12;
+        }
+        if (hour < 10) {
+            hour = "0" + hour;
+        }
+        let minute = d.getMinutes();
+        if (minute < 10) {
+            minute = "0" + minute;
+        }
+        let sec = d.getSeconds();
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+        if (minute == 30 && sec == 0) {
+            getclass()
+        }
+        let time = hour + ":" + minute + ":" + sec;
+        document.getElementById("showday").innerHTML = day[d.getDay()];
+        document.getElementById("showtime").innerHTML = time;
+        document.getElementById("showdate").innerHTML = d.toLocaleDateString("en-US");
+
+
+    }, 1000);
+
+
+
+    $(document).ready(function () {
+        $('#G1').click();
+    });
+
+    function getgroup() {
+        group = $('input[name="group"]:checked').val();
+        return group;
+    }
+    function getclass() {
+        const d = new Date();
+        let start = 8 * 60 + 30;
+        let pd = ((d.getHours() * 60 + d.getMinutes()) - start) / 60;
+        const day = ["sunday", "monday", "tuesday", "wednesday", "thuresday", "friday", "saturday"];
+
+        const url = "{%url 'getclasses'%}";
+        $.post(url, {
+            "group": getgroup(),
+            "day": day[d.getDay()],
+            "period": pd,
+            csrfmiddlewaretoken: '{{csrf_token}}',
+        }, function (data, status) {
+            data = JSON.parse(data)
+            document.getElementById("group").innerText = "Your group is:-" + getgroup();
+            document.getElementById("teacher").innerText = data['teacher'];
+            document.getElementById("subject").innerText = data['subject'];
+
+            $("#class-btn").click(function () {
+                $("#link").attr("href", data['link']);
+
+            });
+
+
+        })
+    }
+</script>
+
+
+{%endblock%}
