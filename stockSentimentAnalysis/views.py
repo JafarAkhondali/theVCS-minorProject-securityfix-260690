@@ -1,13 +1,11 @@
 from django.shortcuts import render, HttpResponse
 import json
-import string
 import joblib
 import re
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 import tensorflow as tf
-from newsapi import NewsApiClient
-import requests    
+import requests
 
 
 ps = PorterStemmer()
@@ -34,7 +32,6 @@ def fun(x):
     x = [ps.stem(i) for i in x if i not in stopWords]
     x = " ".join(x)
     x = [x]
-    print(x)
     x = _vectorizer.transform(x).toarray()
     return x
 
