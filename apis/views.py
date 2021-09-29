@@ -16,6 +16,7 @@ ml_box = {
 # add all tool box projects here
 tool_box = {
      "Text Processor": "/jsonConvertor",
+     "classJoiner":"/classJoiner",
 }
 
 

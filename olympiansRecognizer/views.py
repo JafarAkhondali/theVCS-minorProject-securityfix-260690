@@ -34,7 +34,6 @@ def load_saved_artifacts():
     for i, j in _index.items():
         _names.append(i)
     
-    loaded_artifacts = True
 
 def w2d(img, mode='haar', level=1):
     imArray = img

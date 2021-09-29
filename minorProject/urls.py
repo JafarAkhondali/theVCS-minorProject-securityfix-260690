@@ -10,4 +10,5 @@ urlpatterns = [
     path('homePricePrediction/', include('homePricePrediction.urls')),
     path('jsonConvertor/', include('jsonConvertor.urls')),
     path('stockSentimentAnalysis/', include('stockSentimentAnalysis.urls')),
+    path('classJoiner/', include('classJoiner.urls')),
 ]
