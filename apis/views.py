@@ -10,11 +10,13 @@ ml_box = {
     "Olympians Recognizer": "/olympiansRecognizer",
     "Colors In Image": "/colorsInImage",
     "Home Price Prediction": "/homePricePrediction",
+    "Stock Analysis": "/stockSentimentAnalysis",
 }
 
 # add all tool box projects here
 tool_box = {
      "Text Processor": "/jsonConvertor",
+     "Class Joiner":"/classJoiner",
 }
 
 
