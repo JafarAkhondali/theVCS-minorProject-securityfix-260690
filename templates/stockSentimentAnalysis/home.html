@@ -1,0 +1,146 @@
+{% extends 'stockSentimentAnalysis/base.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+{% block css %}{%endblock%}
+
+
+
+{% block body%}
+<!-- Content -->
+<div class="page-content bg-white">
+    <!-- contact area -->
+    <div class="section-full content-inner bg-white contact-style-1">
+        <div class="container">
+            <div class="row">
+                <!-- right part start -->
+                <div class="col-lg-4 col-md-6  mb-4 m-b30 mb-md-0">
+                    <div class="p-a30 border contact-area border-1 align-self-stretch radius-sm">
+                        <h3 class="m-b5">Stock Sentiment Analyser</h3>
+                        <div class="text-center my-5">
+                            <img src="{%static 'images/projects/stockSentimentAnalysis/logo1.png'%}" alt=""
+                                style="height: 200px; width: 200px;"></div>
+                        <p>This tool predicts whether the stocks will increase or decrease or remain constant on
+                            basis of news headlines</p>
+                    </div>
+                </div>
+                <!-- right part END -->
+                <!-- Left part start -->
+                <div class="col-lg-4 col-md-6  mb-4 m-b30 mb-md-0">
+                    <div class="p-a30 bg-gray clearfix radius-sm">
+                        <h3 class="m-b10 mb-5">Please Feed A Headline</h3>
+                        <div class="dzFormMsg"></div>
+                        <form onsubmit="event.preventDefault(); getPrediction();">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <textarea id="headline" rows="14" class="form-control" required
+                                                placeholder="Headline..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button name="submit" type="submit" value="Submit" class="site-button ">
+                                        <span>Analyze</span> </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Left part END -->
+                <div class="col-lg-4 col-md-6  mb-4 m-b30 mb-md-0">
+                    <div class="p-a30 bg-gray clearfix radius-sm">
+                        <h3 class="m-b10 mb-5">Latest Headlines</h3>
+                        <ul class="container" id="headlines" style="max-height: 410px; overflow-y: scroll;">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contact area  END -->
+    
+    <div class="text-center" id="happy" style="display: none;">
+        <h3 class="m-b10 mb-5">stocks may increase</h3>
+        <img src="{%static 'images/projects/stockSentimentAnalysis/logo2.png'%}" alt="" style="height: 200px; width:200px;">
+    </div>
+
+    <div class="text-center" id="sad" style="display: none;">
+        <h3 class="m-b10 mb-5">stocks may decrease or remain same</h3>
+        <img src="{%static 'images/projects/stockSentimentAnalysis/logo3.png'%}" alt="" style="height: 200px; width:200px;">
+    </div>
+</div>
+
+
+<!-- Content END-->
+{%endblock%}
+
+
+
+{% block script %}
+<script>
+    function getHeadlines() {
+        const _url = "{%url 'getHeadlines'%}"
+        // <a class="post text-green mb-2" href="" target="_blank"></a>
+        $.post(_url, {
+                csrfmiddlewaretoken: '{{csrf_token}}',
+            },
+            function (data, status) {
+                if (!data || data.length == 0) {
+                    return;
+                }
+
+                data = JSON.parse(data)
+
+                for (let index = 0; index < data["headlines"].length; index++) {
+                    const element = data["headlines"][index];
+
+                    a = document.createElement('a');
+                    a.href = element["url"]
+                    a.innerText = element["title"]
+                    a.target = "_blank"
+
+                    div = document.createElement('li')
+                    div.class = "mb-2"
+                    div.append(a)
+
+                    $("#headlines").append(div)
+                }
+            })
+    }
+
+    function getPrediction() {
+        const _url = "{%url 'predictStocks'%}"
+
+        $.post(_url, {
+                headline: $("#headline").val(),
+                csrfmiddlewaretoken: '{{csrf_token}}',
+            },
+            function (data, status) {
+                if (!data || data.length == 0) {
+                    return;
+                }
+
+                data = JSON.parse(data)
+                
+                if(data["res"]==1)
+                {
+                    $("#happy")[0].style.display = "block"
+                    $("#sad")[0].style.display = "none"
+                    document.getElementById('happy').scrollIntoView();
+                }
+                else
+                {
+                    $("#happy")[0].style.display = "none"
+                    $("#sad")[0].style.display = "block"
+                    document.getElementById('sad').scrollIntoView();
+                }
+            })
+    }
+
+    $(document).ready = getHeadlines()
+</script>
+{%endblock%}
