@@ -227,10 +227,7 @@
             document.getElementById("group").innerText = "Group: " + getgroup();
             document.getElementById("teacher").innerText = data['teacher'];
             document.getElementById("subject").innerText = data['subject'];
-
-            $("#class-btn").click(function () {
-                $("#link").attr("href", data['link']);
-            });
+            $("#link")[0].href = data['link'];
         })
     }
 

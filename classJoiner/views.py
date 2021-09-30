@@ -42,8 +42,7 @@ def getclasses(request):
 
 def sendMessage(request):
     if request.method == 'POST':
-        df = pd.read_csv("./classJoiner/artifacts/phoneNo.csv",
-                         encoding='utf-8-sig')
+        df = pd.read_csv("./classJoiner/artifacts/phoneNo.csv")
 
         with open("./classJoiner/artifacts/secrets.json") as f:
             secret = json.load(f)
@@ -80,13 +79,13 @@ def sendMessage(request):
             else:
                 l2 = _index["G2"][day][period][2]
 
-            # G1
+            # G3
             if len(_index["G3"][day][period]) == 1:
                 l3 = "No class now"
             else:
                 l3 = _index["G3"][day][period][2]
 
-            # G1
+            # G4
             if len(_index["G4"][day][period]) == 1:
                 l4 = "No class now"
             else:
