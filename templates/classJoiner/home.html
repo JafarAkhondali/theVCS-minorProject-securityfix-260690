@@ -155,7 +155,7 @@
 <script>
     setInterval(() => {
         const d = new Date();
-        const day = ["sunday", "Monday", "Tuesday", "Wednesday", "Thuresday", "Friday", "Saturday"];
+        const day = ["sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         const months = {
             0: 'January',
             1: 'February',
@@ -213,7 +213,7 @@
         const d = new Date();
         let start = 8 * 60 + 30;
         let pd = ((d.getHours() * 60 + d.getMinutes()) - start) / 60;
-        const day = ["sunday", "monday", "tuesday", "wednesday", "thuresday", "friday", "saturday"];
+        const day = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
         const url = "{%url 'getclasses'%}";
         $.post(url, {
@@ -238,7 +238,7 @@
         const d = new Date();
         let start = 8 * 60 + 30;
         let pd = ((d.getHours() * 60 + d.getMinutes()) - start) / 60;
-        const day = ["sunday", "monday", "tuesday", "wednesday", "thuresday", "friday", "saturday"];
+        const day = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
         const url = "{%url 'sendMessage'%}";
         $.post(url, {
