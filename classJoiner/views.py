@@ -63,7 +63,8 @@ def sendMessage(request):
         period = int(float(period))
 
         # sending link of all the classes
-        if period >= 9 or period < 0 or period == 5:
+        if period >= 9 or period < 0:
+            print("prince")
             return HttpResponse(json.dumps({"status": "passed"}))
 
         for ind, row in df.iterrows():
