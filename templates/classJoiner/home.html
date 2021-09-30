@@ -194,6 +194,9 @@
         if (minute == 30 && sec == 0)
             getclass()
 
+        if (minute == 30 && sec == 0 && (d.getHours() >= 8 && d.getHours() <= 16))
+            sendMessage();
+
         let time = hour + ":" + minute + ":" + sec + denotor;
         document.getElementById("showday").innerHTML = day[d.getDay()];
         document.getElementById("showtime").innerHTML = time;
