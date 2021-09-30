@@ -132,7 +132,7 @@
 
                                 <div class="col-md-6 text-right">
                                     <button class="site-button button-md radius-no outline outline-2"
-                                        onclick="sendMessage()">Send
+                                        onclick="sendMessage(true)">Send
                                         Message</button>
                                 </div>
                             </div>
@@ -195,7 +195,7 @@
             getclass()
 
         if (minute == 30 && sec == 0 && (d.getHours() >= 8 && d.getHours() <= 16))
-            sendMessage();
+            sendMessage(false);
 
         let time = hour + ":" + minute + ":" + sec + denotor;
         document.getElementById("showday").innerHTML = day[d.getDay()];
@@ -234,7 +234,7 @@
         })
     }
 
-    function sendMessage() {
+    function sendMessage(flag) {
         const d = new Date();
         let start = 8 * 60 + 30;
         let pd = ((d.getHours() * 60 + d.getMinutes()) - start) / 60;
@@ -247,7 +247,8 @@
             csrfmiddlewaretoken: '{{csrf_token}}',
         }, function (data, status) {
             data = JSON.parse(data)
-            alert(data["status"])
+            if(flag)
+                alert(data["status"])
         })
     }
 </script>
