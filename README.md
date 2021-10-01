@@ -20,6 +20,7 @@
 
 > 4. Stock Sentiment Analysis- This project uses Deep Learning to predict the behaviour of stocks using news headlines - By [Prince Mishra](https://www.linkedin.com/in/prince-mishra-7379101ab/)
 
+> 5. Salary Predictor- This project uses Deep Learning to predict whether the salary of a person will be less than equal to 50k or greater than 50k - By [Prince Mishra](https://www.linkedin.com/in/prince-mishra-7379101ab/)
 
 # Tool Box
 
@@ -35,10 +36,14 @@
 
 > `pip install -r requirements.txt`
 
+> `nltk modules`
+
 > [VS Code](https://code.visualstudio.com/download)
 
 # Running
 
 > in terminal type `python ./manage.py runserver`
+
+> or double click `minorProject.bat` file
 
 ---
