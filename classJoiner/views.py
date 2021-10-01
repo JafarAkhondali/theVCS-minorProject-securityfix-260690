@@ -56,17 +56,16 @@ def sendMessage(request):
         # loading time table
         with open("./classJoiner/artifacts/timetable.json") as f:
             _index = json.load(f)
-
         # loading info about class timing
         day = request.POST.get('day')
         period = request.POST.get('period')
         period = int(float(period))
 
         # sending link of all the classes
-        if period >= 9 or period < 0:
-            print("prince")
+        if period >= 9 or period < 0 or period == 4:
             return HttpResponse(json.dumps({"status": "passed"}))
 
+        
         for ind, row in df.iterrows():
             if len(_index[row["group"]][day][period]) > 1:
                 message = client.messages.create(

@@ -6,24 +6,25 @@
 
 {% block css %}
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+    /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap'); */
 
     #uploader {
-        margin: 0 50 0 50 px;
+        /* margin: 0 50 0 50 px; */
         padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
+        /* box-sizing: border-box; */
+        /* font-family: "Poppins", sans-serif; */
         display: flex;
         align-items: center;
-        justify-content: center;
-        height: 200px;
-        width: 500px;
+        /* justify-content: center; */
+        height: 250px;
+        width: 80%;
         background: #5256ad;
+        text-align: center;
     }
 
     .drag-area {
-        border: 2px dashed #fff;
-        height: 200px;
+        /* border: 2px dashed #fff; */
+        height: 250px;
         width: 500px;
         border-radius: 5px;
         display: flex;
@@ -64,6 +65,7 @@
         color: #5256ad;
         border-radius: 5px;
         cursor: pointer;
+        margin-bottom: 20px;
     }
 
     .drag-area img {
@@ -79,7 +81,7 @@
 
 {% block body%}
 <div class="section-full bg-white content-inner">
-    <div class="container">
+    <div class="container my-5">
         <div class="sort-title clearfix text-center">
             <h4>Colors In Image</h4>
             <p>Upload Your Image And We Shall Find Atmost 10 Colors From Your Image</p>

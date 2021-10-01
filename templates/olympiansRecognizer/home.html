@@ -17,7 +17,7 @@
         align-items: center;
         justify-content: center;
         height: 200px;
-        width: 500px;
+        width: 100%;
         background: #5256ad;
     }
 
@@ -79,7 +79,7 @@
 
 {% block body%}
 <div class="section-full bg-white content-inner">
-    <div class="container">
+    <div class="container my-5">
         <div class="row">
             <div class="col-lg-12">
                 <div class="sort-title clearfix text-center">
@@ -176,69 +176,68 @@
             </div>
         </div>
     </div>
-</div>
 
-<div class="alert alert-danger text-center" role="alert" style="display:none;">
+    <div class="alert alert-danger text-center" role="alert" style="display:none;">
 
-</div>
-
-<div class="container my-5" id="uploader">
-    <div class="drag-area">
-        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-        <header>Drag & Drop</header>
-        <span>OR</span>
-        <button>Browse File</button>
-        <input type="file" hidden>
     </div>
-</div>
-</div>
+
+    <div class="container my-5" id="uploader">
+        <div class="drag-area">
+            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <header>Drag & Drop</header>
+            <span>OR</span>
+            <button>Browse File</button>
+            <input type="file" hidden>
+        </div>
+    </div>
 
 
-<div class="container" style="display: none;" id="matcher">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="table-responsive">
-                <div class="alert alert-success text-center" role="alert" id="most_matched">
+    <div class="container" style="display: none;" id="matcher">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <div class="alert alert-success text-center" role="alert" id="most_matched">
 
+                    </div>
+                    <table class="table check-tbl">
+                        <thead>
+                            <tr>
+                                <th colspan="80%">Athlete's Name</th>
+                                <th>Percent Match</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="alert">
+                                <td class="product-item-name" colspan="80%">Bajrang Punia</td>
+                                <td class="product-item-price" id="bajrang_punia"></td>
+                            </tr>
+                            <tr class="alert">
+                                <td class="product-item-name" colspan="80%">Lovlina Borgohain</td>
+                                <td class="product-item-price" id="lovlina_borgohain"></td>
+                            </tr>
+                            <tr class="alert">
+                                <td class="product-item-name" colspan="80%">Mirabai Chanu</td>
+                                <td class="product-item-price" id="mirabai_chanu"></td>
+                            </tr>
+                            <tr class="alert">
+                                <td class="product-item-name" colspan="80%">Neeraj Chopra</td>
+                                <td class="product-item-price" id="neeraj_chopra"></td>
+                            </tr>
+                            <tr class="alert">
+                                <td class="product-item-name" colspan="80%">PR Sreejesh</td>
+                                <td class="product-item-price" id="pr_sreejesh"></td>
+                            </tr>
+                            <tr class="alert">
+                                <td class="product-item-name" colspan="80%">PV Sindhu</td>
+                                <td class="product-item-price" id="pv_sindhu"></td>
+                            </tr>
+                            <tr class="alert">
+                                <td class="product-item-name" colspan="80%">Ravi Kumar Dahiya</td>
+                                <td class="product-item-price" id="ravi_kumar_dahiya"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <table class="table check-tbl">
-                    <thead>
-                        <tr>
-                            <th colspan="80%">Athlete's Name</th>
-                            <th>Percent Match</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="alert">
-                            <td class="product-item-name" colspan="80%">Bajrang Punia</td>
-                            <td class="product-item-price" id="bajrang_punia"></td>
-                        </tr>
-                        <tr class="alert">
-                            <td class="product-item-name" colspan="80%">Lovlina Borgohain</td>
-                            <td class="product-item-price" id="lovlina_borgohain"></td>
-                        </tr>
-                        <tr class="alert">
-                            <td class="product-item-name" colspan="80%">Mirabai Chanu</td>
-                            <td class="product-item-price" id="mirabai_chanu"></td>
-                        </tr>
-                        <tr class="alert">
-                            <td class="product-item-name" colspan="80%">Neeraj Chopra</td>
-                            <td class="product-item-price" id="neeraj_chopra"></td>
-                        </tr>
-                        <tr class="alert">
-                            <td class="product-item-name" colspan="80%">PR Sreejesh</td>
-                            <td class="product-item-price" id="pr_sreejesh"></td>
-                        </tr>
-                        <tr class="alert">
-                            <td class="product-item-name" colspan="80%">PV Sindhu</td>
-                            <td class="product-item-price" id="pv_sindhu"></td>
-                        </tr>
-                        <tr class="alert">
-                            <td class="product-item-name" colspan="80%">Ravi Kumar Dahiya</td>
-                            <td class="product-item-price" id="ravi_kumar_dahiya"></td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
@@ -308,7 +307,7 @@
                         if (!data || data.length == 0) {
                             return;
                         }
-                        
+
                         data = JSON.parse(data)
 
                         if (data["err"]) {
