@@ -11,6 +11,7 @@ ml_box = {
     "Colors In Image": "/colorsInImage",
     "Home Price Prediction": "/homePricePrediction",
     "Stock Analysis": "/stockSentimentAnalysis",
+    "Salary Predictor": "/salaryPredictor",
 }
 
 # add all tool box projects here

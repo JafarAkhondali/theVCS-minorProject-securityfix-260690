@@ -20,7 +20,6 @@ def readJSON(fileName):
     return _index
 
 
-
 def home(request):
     context = {
         "title": "ML-TOOLBOX"
@@ -46,8 +45,8 @@ def getEducation(request):
 
 def getMartialStatus(request):
     if request.method == "POST":
-        _index = readJSON("martialStatus.json")
-        return HttpResponse(json.dumps({"martialStatus": _index}))
+        _index = readJSON("maritalStatus.json")
+        return HttpResponse(json.dumps({"maritalStatus": _index}))
     else:
         return HttpResponse(json.dumps({"status": "failed"}))
 
@@ -79,15 +78,15 @@ def getRace(request):
 def getCountry(request):
     if request.method == "POST":
         _index = readJSON("native_country.json")
-        return HttpResponse(json.dumps({"country": _index}))
+        return HttpResponse(json.dumps({"nativeCountry": _index}))
     else:
         return HttpResponse(json.dumps({"status": "failed"}))
 
 
 def predict(request):
     if request.method == "POST":
-        age, workclass, fnlwgt, education, maritalStatus, occupation, relationship, race, sex, capital_gain, capital_loss, hours_per_week, native_country = request.POST("age"), request.POST("workclass"), request.POST("fnlwgt"), request.POST("education"), request.POST(
-            "maritalStatus"), request.POST("occupation"), request.POST("relationship"), request.POST("race"), request.POST("sex"), request.POST("capital_gain"), request.POST("capital_loss"), request.POST("hours_per_week"), request.POST("native_country")
+        age, workclass, fnlwgt, education, maritalStatus, occupation, relationship, race, sex, capital_gain, capital_loss, hours_per_week, native_country = request.POST.get("age"), request.POST.get("workclass"), request.POST.get("fnlwgt"), request.POST.get("education"), request.POST.get(
+            "maritalStatus"), request.POST.get("occupation"), request.POST.get("relationship"), request.POST.get("race"), request.POST.get("sex"), request.POST.get("capitalGain"), request.POST.get("capitalLoss"), request.POST.get("hoursPerWeek"), request.POST.get("nativeCountry")
 
         scaler, model = load_artifacts()
         col_index = readJSON("colIndex.json")

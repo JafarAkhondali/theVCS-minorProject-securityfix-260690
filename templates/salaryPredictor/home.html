@@ -16,13 +16,14 @@
     <div class="bg-white lightgallery" id="lightgallery">
         <!-- Left & right section start -->
         <div class="section-full bg-white content-inner">
-            <div class="container my-5">
+            <div class="container mt-5">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="sort-title clearfix text-center">
                             <h4>Salary Predictor</h4>
                         </div>
-                        <p class="text-center">This project can predict whelther the salary of a person will be less than equal to 50K or will be greater then 50K</p>
+                        <p class="text-center">This project can predict whelther the salary of a person will be less
+                            than equal to 50K or will be greater then 50K</p>
                     </div>
                 </div>
             </div>
@@ -36,91 +37,106 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="font-weight-700 m-t0 m-b40">Get Your Home Price</h2>
+                    <h2 class="font-weight-700 m-t0 m-b40">Lets Us Predict Your Salary</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 m-b30">
                     <div class="p-a30 border-1  max-w500 m-auto">
                         <div class="tab-content">
-                            <form id="login" class="tab-pane active" onsubmit="return getPrice()">
+                            <form class="tab-pane active" onsubmit="event.preventDefault(); predictSalary();">
 
+                                <!-- age -->
                                 <div class="form-group">
-                                    <label class="font-weight-700">Is Your Home Under Construction ? </label>
-                                    <select name="underConstruction" required="" class="form-control">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
+                                    <label class="font-weight-700"> Your Age </label>
+                                    <input id="age" required="" type="number" class="form-control" min="1"
+                                        placeholder="please tell your age" value="25">
+                                </div>
+
+                                <!-- workClass -->
+                                <div class="form-group">
+                                    <label class="font-weight-700">Work Class </label>
+                                    <select id="workClass" required="" class="form-control">
                                     </select>
                                 </div>
 
+                                <!-- fnlwgt -->
                                 <div class="form-group">
-                                    <label class="font-weight-700"> Is Your Home RERA Certified ? </label>
-                                    <select name="rera" required="" class="form-control">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
+                                    <label class="font-weight-700"> FNLWGT </label>
+                                    <input id="fnlwgt" required="" type="number" class="form-control" min="0"
+                                        placeholder="number of people the census believes" value="30000000">
+                                </div>
+
+                                <!-- education -->
+                                <div class="form-group">
+                                    <label class="font-weight-700">Education </label>
+                                    <select id="education" required="" class="form-control">
                                     </select>
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="font-weight-700"> No Of Rooms ? </label>
-                                    <input name="bhk" required="" type="number" class="form-control" min="1"
-                                        placeholder="tell the no of rooms in your home">
-                                </div>
 
+                                <!-- martialStatus -->
                                 <div class="form-group">
-                                    <label class="font-weight-700"> Type ? </label>
-                                    <select name="bhkOrRk" required="" class="form-control">
-                                        <option value="1">BHK</option>
-                                        <option value="0">RK</option>
+                                    <label class="font-weight-700">Marital Status </label>
+                                    <select id="maritalStatus" required="" class="form-control">
                                     </select>
                                 </div>
 
+                                <!-- occupation -->
                                 <div class="form-group">
-                                    <label class="font-weight-700"> Area Of Your House In Square Feet ? </label>
-                                    <input name="sqFt" required="" type="text" class="form-control" min="1"
-                                        placeholder="Tell the area of your home in square feet?">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="font-weight-700"> Are You Ready To Move ? </label>
-                                    <select name="readyToMove" required="" class="form-control">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
+                                    <label class="font-weight-700">Occupation </label>
+                                    <select id="occupation" required="" class="form-control">
                                     </select>
                                 </div>
 
+                                <!-- relationship -->
                                 <div class="form-group">
-                                    <label class="font-weight-700"> Is It Resaled ? </label>
-                                    <select name="resaled" required="" class="form-control">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
+                                    <label class="font-weight-700">Relationship </label>
+                                    <select id="relationship" required="" class="form-control">
                                     </select>
                                 </div>
 
+                                <!-- race -->
                                 <div class="form-group">
-                                    <label class="font-weight-700"> Longitude Of Your House ? </label>
-                                    <input name="longitude" required="" type="number" class="form-control" min="1"
-                                        placeholder="Tell The Longitude of Your House?" min="-180" max="180">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="font-weight-700"> Latitude Of Your House ? </label>
-                                    <input name="latitude" required="" type="number" class="form-control" min="1"
-                                        placeholder="Tell The Latitude of Your House?" min="-90" max="90">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="font-weight-700"> From Whom You Are Buying Home ? </label>
-                                    <select name="postedBy" required="" class="form-control">
-                                        <option value="Dealer">Dealer</option>
-                                        <option value="Owner">Owner</option>
-                                        <option value="Builder">Builder</option>
+                                    <label class="font-weight-700">Race </label>
+                                    <select id="race" required="" class="form-control">
                                     </select>
                                 </div>
-
+                                
+                                <!-- sex -->
                                 <div class="form-group">
-                                    <label class="font-weight-700"> Location ? </label>
-                                    <select name="address" required="" class="form-control" id="address">
+                                    <label class="font-weight-700"> Gender </label>
+                                    <select id="sex" required="" class="form-control">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- capitalGain -->
+                                <div class="form-group">
+                                    <label class="font-weight-700"> Capital Gain </label>
+                                    <input id="capitalGain" required="" type="number" class="form-control"
+                                    placeholder="your capital gain" value="0">
+                                </div>
+                                
+                                <!-- capitalLoss -->
+                                <div class="form-group">
+                                    <label class="font-weight-700"> Capital Loss </label>
+                                    <input id="capitalLoss" required="" type="number" class="form-control"
+                                    placeholder="your capital loss" value="0">
+                                </div>
+                                
+                                <!-- hoursPerWeek -->
+                                <div class="form-group">
+                                    <label class="font-weight-700"> Hours Per Week </label>
+                                    <input id="hoursPerWeek" required="" type="number" class="form-control"
+                                    placeholder="hours you work per week" value="0">
+                                </div>
+                                
+                                <!-- nativeCountry -->
+                                <div class="form-group">
+                                    <label class="font-weight-700">Native Country </label>
+                                    <select id="nativeCountry" required="" class="form-control">
                                     </select>
                                 </div>
 
@@ -129,8 +145,13 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="alert alert-success mt-5 text-center" role="alert" id="result" style="display:none">
-                            This is a success alert—check it out!
+
+                        <div class="alert alert-danger mt-5 text-center" role="alert" id="lessEqual" style="display:none; font-size:30px;">
+                            Your Salary Is &le; 50k <span>&#128543;</span>
+                        </div>
+                        
+                        <div class="alert alert-success mt-5 text-center" role="alert" id="greater" style="display:none; font-size:30px;">
+                            Your Salary Is &gt; 50k <span>&#129297;</span>
                         </div>
                     </div>
                 </div>
@@ -150,46 +171,81 @@
 
 <script>
     $(document).ready(function () {
-        const url = "{%url 'allAddresses'%}";
+        data = {
+            "{%url 'getWorkClass'%}": "workClass",
+            "{%url 'getEducation'%}": "education",
+            "{%url 'getMartialStatus'%}": "maritalStatus",
+            "{%url 'getOccupation'%}": "occupation",
+            "{%url 'getRelationship'%}": "relationship",
+            "{%url 'getRace'%}": "race",
+            "{%url 'getCountry'%}": "nativeCountry",
+        }
 
-        $.post(url, {
-            csrfmiddlewaretoken: '{{csrf_token}}',
-        }, function (data, status) {
-            data = JSON.parse(data)
-            data = data["address"]
-            html = ""
-
-            for (let index = 0; index < data.length; index++) {
-                const element = data[index];
-                html += `<option value="` + element + `">` + element + `</option>`
+        for (const url in data) {
+            if (Object.hasOwnProperty.call(data, url)) {
+                const id = data[url];
+                getData(url, id);
             }
-
-            $("#address")[0].innerHTML = html
-        })
+        }
     })
 
-    function getPrice() {
-        $("#result")[0].style.display = "none";
-        const url = "{%url 'getPrice'%}";
+    function getData(__url__, id) {
+
+        $.ajax({
+            type: 'POST',
+            url: __url__,
+            data: {
+                csrfmiddlewaretoken: '{{csrf_token}}',
+            },
+            success: function (data) {
+                if (!data || data.length == 0) return;
+                data = JSON.parse(data)
+
+                for (let index = 0; index < data[id].length; index++) {
+                    const element = data[id][index];
+                    opt = document.createElement('option')
+                    opt.innerText = element
+                    opt.value = element
+                    $(`#${id}`)[0].append(opt)
+                }
+            },
+            async: false,
+        });
+
+    }
+
+    function predictSalary() {
+        $("#lessEqual")[0].style.display = "none";
+        $("#greater")[0].style.display = "none";
+        const url = "{%url 'predictSalary'%}";
 
         $.post(url, {
-            underConstruction: document.getElementsByName("underConstruction")[0].value,
-            rera: document.getElementsByName("rera")[0].value,
-            bhk: document.getElementsByName("bhk")[0].value,
-            bhkOrRk: document.getElementsByName("bhkOrRk")[0].value,
-            sqFt: document.getElementsByName("sqFt")[0].value,
-            readyToMove: document.getElementsByName("readyToMove")[0].value,
-            resaled: document.getElementsByName("resaled")[0].value,
-            longitude: document.getElementsByName("longitude")[0].value,
-            latitude: document.getElementsByName("latitude")[0].value,
-            postedBy: document.getElementsByName("postedBy")[0].value,
-            address: document.getElementsByName("address")[0].value,
+            age: $(`#age`)[0].value,
+            workClass: $(`#workClass`)[0].value,
+            fnlwgt: $(`#fnlwgt`)[0].value,
+            education: $(`#education`)[0].value,
+            maritalStatus: $(`#maritalStatus`)[0].value,
+            occupation: $(`#occupation`)[0].value,
+            relationship: $(`#relationship`)[0].value,
+            race: $(`#race`)[0].value,
+            capitalGain: $(`#capitalGain`)[0].value,
+            capitalLoss: $(`#capitalLoss`)[0].value,
+            hoursPerWeek: $(`#hoursPerWeek`)[0].value,
+            nativeCountry: $(`#nativeCountry`)[0].value,
             csrfmiddlewaretoken: '{{csrf_token}}',
         }, function (data, status) {
             data = JSON.parse(data)
-            $("#result")[0].style.display = "block";
-            $("#result")[0].innerText = "";
-            $("#result")[0].innerText = data["result"];
+            
+            if(data["result"]=="1")
+            {
+                $("#lessEqual")[0].style.display = "none";
+                $("#greater")[0].style.display = "block";
+            }
+            else
+            {
+                $("#lessEqual")[0].style.display = "block";
+                $("#greater")[0].style.display = "none";
+            }
         })
 
         return false;
