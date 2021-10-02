@@ -30,6 +30,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: installing libjasper-dev
+        run: |
+          sudo apt-get install libjasper-dev
+          sudo apt-get install libatlas-base-dev
+
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
       - name: Upload artifact for deployment jobs
