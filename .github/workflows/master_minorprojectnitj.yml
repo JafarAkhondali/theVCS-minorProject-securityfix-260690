@@ -17,6 +17,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: installing libjasper-dev
+        run: |
+          sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+          sudo apt update
+          sudo apt install libjasper1 libjasper-dev
+
+
       - name: Set up Python version
         uses: actions/setup-python@v1
         with:
@@ -29,11 +36,6 @@ jobs:
       
       - name: Install dependencies
         run: pip install -r requirements.txt
-
-      - name: installing libjasper-dev
-        run: |
-          sudo apt-get install libjasper-dev
-          sudo apt-get install libatlas-base-dev
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
