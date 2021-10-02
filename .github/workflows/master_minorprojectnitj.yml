@@ -23,6 +23,7 @@ jobs:
           sudo apt update
           sudo apt install libjasper1 libjasper-dev
 
+
       - name: Set up Python version
         uses: actions/setup-python@v1
         with:
@@ -66,4 +67,4 @@ jobs:
         with:
           app-name: 'minorprojectnitj'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_113A20841F9D45EA9B3CA65C04FA8B3D }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F33B5F180EDB4BE6BA47B2A005943E32 }}
