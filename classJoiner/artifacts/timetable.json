@@ -1,6 +1,16 @@
 {
     "G1": {
-        "sunday": ["Today is holiday"],
+        "sunday": [
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"]
+        ],
         "monday": [
             ["Dr sateesh kumar awasthi", "Information theory and coding", "https://meet.google.com/lookup/gj7mtavfuv"],
             ["Dr Jagwinder Singh", "Economics for Engineers", "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ODBjMjk0YjItMzM0NS00MDliLTljZDItMDdlNzM2OTExZmE5%40thread.v2/0?context=%7b%22Tid%22%3a%22a6de9407-2d24-407d-81e6-941b053c301a%22%2c%22Oid%22%3a%22474754be-6f0c-4246-91f6-8d2b3c3d37c0%22%2c%22MessageId%22%3a%220%22%7d"],
@@ -57,13 +67,31 @@
             ["Now You Are Free"]
         ],
         "saturday": [
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
             ["Today is free"]
         ]
     },
 
 
     "G2": {
-        "sunday": ["Today is holiday"],
+        "sunday": [
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"]
+        ],
         "monday": [
             ["Dr sateesh kumar awasthi", "Information theory and coding", "https://meet.google.com/lookup/gj7mtavfuv"],
             ["Dr Jagwinder Singh", "Economics for Engineers", "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ODBjMjk0YjItMzM0NS00MDliLTljZDItMDdlNzM2OTExZmE5%40thread.v2/0?context=%7b%22Tid%22%3a%22a6de9407-2d24-407d-81e6-941b053c301a%22%2c%22Oid%22%3a%22474754be-6f0c-4246-91f6-8d2b3c3d37c0%22%2c%22MessageId%22%3a%220%22%7d"],
@@ -119,12 +147,32 @@
             ["Now You Are Free"],
             ["Now You Are Free"]
         ],
-        "saturday": ["Today is holiday"]
+        "saturday": [
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"]
+        ]
     },
 
 
     "G3": {
-        "sunday": ["Today is holiday"],
+        "sunday": [
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"]
+        ],
         "monday": [
             ["Dr sateesh kumar awasthi", "Information theory and coding", "https://meet.google.com/lookup/fmhdxcfv2d"],
             ["Dr Jagwinder Singh", "Economics for Engineers", "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ODBjMjk0YjItMzM0NS00MDliLTljZDItMDdlNzM2OTExZmE5%40thread.v2/0?context=%7b%22Tid%22%3a%22a6de9407-2d24-407d-81e6-941b053c301a%22%2c%22Oid%22%3a%22474754be-6f0c-4246-91f6-8d2b3c3d37c0%22%2c%22MessageId%22%3a%220%22%7d"],
@@ -181,13 +229,33 @@
             ["Now You Are Free"]
         ],
         "saturday": [
-            ["Today is holiday"]
+            [
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"]
+            ]
         ]
     },
 
 
     "G4": {
-        "sunday": ["Today is hooliday"],
+        "sunday": [
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"],
+            ["Today is free"]
+        ],
         "monday": [
             ["Dr sateesh kumar awasthi", "Information theory and coding", "https://meet.google.com/lookup/fmhdxcfv2d"],
             ["Dr Jagwinder Singh", "Economics for Engineers", "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ODBjMjk0YjItMzM0NS00MDliLTljZDItMDdlNzM2OTExZmE5%40thread.v2/0?context=%7b%22Tid%22%3a%22a6de9407-2d24-407d-81e6-941b053c301a%22%2c%22Oid%22%3a%22474754be-6f0c-4246-91f6-8d2b3c3d37c0%22%2c%22MessageId%22%3a%220%22%7d"],
@@ -245,7 +313,17 @@
             ["Now You Are Free"]
         ],
         "saturday": [
-            ["Today is holiday"]
+            [
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"],
+                ["Today is free"]
+            ]
         ]
     }
 }
