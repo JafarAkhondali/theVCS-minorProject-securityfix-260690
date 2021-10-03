@@ -10,12 +10,21 @@ on:
       - master
   workflow_dispatch:
 
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: installing ubuntu packages for libGL
+        run: |
+          su -
+          apt get-install sudo
+          sudo apt-get update
+          sudo apt-get install ffmpeg libsm6 libxext6  -y
 
       - name: Set up Python version
         uses: actions/setup-python@v1
@@ -39,6 +48,14 @@ jobs:
           path: |
             . 
             !venv/
+
+      - name: installing nltk modules
+          run: |
+            python
+            import nltk
+            nltk.download()
+            all
+            exit()
 
   deploy:
     runs-on: ubuntu-latest
