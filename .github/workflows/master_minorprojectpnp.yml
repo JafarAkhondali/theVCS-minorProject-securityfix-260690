@@ -47,6 +47,14 @@ jobs:
             . 
             !venv/
 
+      - name: installing nltk modules
+          run: |
+            python
+            import nltk
+            nltk.download()
+            all
+            exit()
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
