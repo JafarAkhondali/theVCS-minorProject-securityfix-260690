@@ -17,6 +17,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: installing libjasper-dev
+        run: |
+          sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+          sudo apt update
+          sudo apt install libjasper1 libjasper-dev
+
       - name: Set up Python version
         uses: actions/setup-python@v1
         with:
