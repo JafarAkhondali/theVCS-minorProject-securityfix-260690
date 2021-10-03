@@ -17,6 +17,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Create and start virtual environment
+        run: |
+          apt-get update
+          apt install libgl1-mesa-glx
+          apt-get install ffmpeg libsm6 libxext6  -y
+
       - name: Set up Python version
         uses: actions/setup-python@v1
         with:
