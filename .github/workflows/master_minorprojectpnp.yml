@@ -19,8 +19,9 @@ jobs:
 
       - name: installing ubuntu packages for libGL
         run: |
+          su -
+          apt get-install sudo
           sudo apt-get update
-          sudo apt install libgl1-mesa-glx
           sudo apt-get install ffmpeg libsm6 libxext6  -y
 
       - name: Set up Python version
