@@ -17,13 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: installing libjasper-dev
-        run: |
-          sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
-          sudo apt update
-          sudo apt install libjasper1 libjasper-dev
-
-
       - name: Set up Python version
         uses: actions/setup-python@v1
         with:
@@ -67,4 +60,4 @@ jobs:
         with:
           app-name: 'minorprojectnitj'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F33B5F180EDB4BE6BA47B2A005943E32 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9F45BE120D9C451DA8E9FFE4FC3535FD }}
