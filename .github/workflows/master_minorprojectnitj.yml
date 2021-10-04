@@ -24,6 +24,12 @@ jobs:
         with:
           python-version: '3.9'
 
+      - name: Installing ubuntu packages
+        run: |
+          apt-get install sudo
+          sudo apt-get update
+          sudo apt-get install ffmpeg libsm6 libxext6  -y
+
       - name: Create and start virtual environment
         run: |
           python -m venv venv
@@ -31,13 +37,6 @@ jobs:
       
       - name: Install dependencies
         run: pip install -r requirements.txt
-
-      - name: Installing ubuntu packages
-        run: |
-          su -
-          apt-get install sudo
-          sudo apt-get update
-          sudo apt-get install ffmpeg libsm6 libxext6  -y
 
       - name: Installing nltk
         run: |
