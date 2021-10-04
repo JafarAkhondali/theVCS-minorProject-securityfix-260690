@@ -66,10 +66,6 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-    - name: Purge artifacts
-      uses: kolpav/purge-artifacts-action@v1
-
-
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
