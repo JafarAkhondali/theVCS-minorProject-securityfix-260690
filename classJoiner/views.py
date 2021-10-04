@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse
 import json
 import pandas as pd
 from twilio.rest import Client
+from minorProject.settings import ACCOUNT_SID, AUTH_TOKEN
 
 # Create your views here.
 
@@ -43,11 +44,8 @@ def getclasses(request):
 def sendMessage(request):
     if request.method == 'POST':
         # logging to the whatsapp account
-        with open("./classJoiner/artifacts/secrets.json") as f:
-            secret = json.load(f)
-
-        account_sid = secret["accountSid"]
-        auth_token = secret["auth_token"]
+        account_sid = ACCOUNT_SID
+        auth_token = AUTH_TOKEN
         client = Client(account_sid, auth_token)
 
         # reading all the receivers
@@ -56,6 +54,7 @@ def sendMessage(request):
         # loading time table
         with open("./classJoiner/artifacts/timetable.json") as f:
             _index = json.load(f)
+
         # loading info about class timing
         day = request.POST.get('day')
         period = request.POST.get('period')
