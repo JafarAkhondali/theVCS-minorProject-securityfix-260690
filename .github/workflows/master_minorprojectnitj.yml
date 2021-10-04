@@ -32,22 +32,22 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Installing ubuntu packages
-        run: |
-          su -
-          apt-get install sudo
-          sudo apt-get update
-          sudo apt-get install ffmpeg libsm6 libxext6  -y
+      # - name: Installing ubuntu packages
+      #   run: |
+      #     su -
+      #     apt-get install sudo
+      #     sudo apt-get update
+      #     sudo apt-get install ffmpeg libsm6 libxext6  -y
       
-      -name: Installing nltk
-        run: |
-          python
-          import nltk
-          nltk.download()
-          d
-          all
-          q
-          exit()
+      # -name: Installing nltk
+      #   run: |
+      #     python
+      #     import nltk
+      #     nltk.download()
+      #     d
+      #     all
+      #     q
+      #     exit()
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
