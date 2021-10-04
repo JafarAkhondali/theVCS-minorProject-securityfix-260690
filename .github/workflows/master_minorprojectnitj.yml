@@ -26,7 +26,8 @@ jobs:
 
       - name: Installing ubuntu packages
         run: |
-          sudo bash
+          su -
+          +Pm5xdKyk_FWyws
           apt-get install sudo
           sudo apt-get update
           sudo apt-get install ffmpeg libsm6 libxext6  -y
