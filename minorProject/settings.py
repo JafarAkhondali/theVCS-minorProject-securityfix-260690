@@ -26,6 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = get_random_secret_key()
 ACCOUNT_SID = config("accountSid")
 AUTH_TOKEN = config("auth_token")
+NEWS_PAPER_API = config("newsapi_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
