@@ -39,7 +39,7 @@ jobs:
 
       - name: Installing nltk
         run: |
-          python
+          !/usr/bin/env python
           import nltk
           nltk.download()
           d
