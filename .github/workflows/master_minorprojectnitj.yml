@@ -12,15 +12,20 @@ on:
 
 
 
-jobs:          
+jobs: 
+  delete-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: kolpav/purge-artifacts-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          expire-in: 0 # Set this to 0 to delete all artifacts
+         
   build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Remove artifacts
-        uses: c-hive/gha-remove-artifacts@v1.2.0
 
       - name: Set up Python version
         uses: actions/setup-python@v1
