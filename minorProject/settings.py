@@ -27,6 +27,9 @@ SECRET_KEY = get_random_secret_key()
 ACCOUNT_SID = config("accountSid")
 AUTH_TOKEN = config("auth_token")
 NEWS_PAPER_API = config("newsapi_key")
+GDRIVE_BASE_FOLDER = config("gdrive_base_folder")
+EMAIL_ADDRESS = config("email_address")
+EMAIL_PASSWORD = config("email_password")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -49,6 +52,8 @@ INSTALLED_APPS = [
     'colorsInImage.apps.ColorsinimageConfig',
     'jsonConvertor.apps.JsonconvertorConfig',
     'classJoiner.apps.ClassjoinerConfig',
+    'codeShare.apps.CodeshareConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [

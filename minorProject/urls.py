@@ -16,4 +16,6 @@ urlpatterns = [
     path('stockSentimentAnalysis/', include('stockSentimentAnalysis.urls')),
     path('classJoiner/', include('classJoiner.urls')),
     path('salaryPredictor/', include('salaryPredictor.urls')),
+    path('codeShare/', include('codeShare.urls')),
+    path('accounts/', include('accounts.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
