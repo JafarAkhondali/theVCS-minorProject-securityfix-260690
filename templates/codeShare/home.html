@@ -1,0 +1,625 @@
+{% extends 'codeShare/base.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+{% block css %}
+<style type="text/css" media="screen">
+    .fullScreen {
+        height: auto;
+        width: auto;
+        border: 0;
+        margin: 0;
+        position: fixed !important;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+    }
+
+    body.fullScreen {
+        overflow: hidden;
+        /* transform breaks position fixed */
+        transform: none !important;
+    }
+
+    .scrollmargin {
+        height: 500px;
+        text-align: center;
+    }
+
+    input[type=checkbox] {
+        opacity: 1;
+    }
+
+    #-showPrintMargin {
+        opacity: 0;
+    }
+
+    #-useSoftTabs {
+        opacity: 0;
+    }
+
+    .ace_scrollbar {
+        z-index: 1;
+    }
+
+    .codeIcon:hover {
+        cursor: pointer;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .fa-link:hover {
+        cursor: pointer;
+        color: #ff4045;
+    }
+
+    svg path,
+    svg rect {
+        fill: #FF6700;
+    }
+</style>
+{%endblock%}
+
+
+{% block body%}
+<div class="page-content bg-white">
+    <div class="section-full content-inner-2 bg-img-fix  wow fadeIn" id="blackground">
+        <div class="container">
+            <div class="row">
+
+                <!-- options -->
+                <div class="col-md-4">
+                    <div class="container options mt-5">
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+
+                                <div class="dlab-accordion gradient-1 space" id="accordion004">
+
+                                    <div class="panel" id="shortcuts">
+                                        <div class="acod-head">
+                                            <h6 class="acod-title"> <a href="javascript:void(0);" data-toggle="collapse"
+                                                    aria-expanded="false" data-target="#collapse10" class="collapsed"
+                                                    onclick="openShortcuts()">Shortcuts</a> </h6>
+                                        </div>
+                                        <div id="collapse10" class="acod-body collapse" data-parent="#accordion004"
+                                            style="border: grey 1px solid;">
+                                            <div class="acod-content">
+                                                <p class="mb-0"> All Shortcuts In Editor</p>
+                                                <p class="mb-0"> For FullScreen Keep Cursor In IDE And Press F10</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="panel" id="settings">
+                                        <div class="acod-head">
+                                            <h6 class="acod-title"> <a href="javascript:void(0);" data-toggle="collapse"
+                                                    aria-expanded="false" data-target="#collapse11" class="collapsed"
+                                                    onclick="openSettings()">
+                                                    Settings</a> </h6>
+                                        </div>
+                                        <div id="collapse11" class="acod-body collapse" data-parent="#accordion004"
+                                            style="border: grey 1px solid;">
+                                            <div class="acod-content">
+                                                <p> All Settings In Editor </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {%if user.is_authenticated%}
+                                    <div class="panel">
+                                        <div class="acod-head">
+                                            <h6 class="acod-title"> <a href="javascript:void(0);" data-toggle="collapse"
+                                                    aria-expanded="false" data-target="#collapse15" class="collapsed">
+                                                    My Codes</a> </h6>
+                                        </div>
+                                        <div id="collapse15" class="acod-body collapse" data-parent="#accordion004"
+                                            style="border: grey 1px solid;">
+                                            <div class="acod-content" id="myCodes"
+                                                style="max-height: 200px; overflow-y: scroll; overflow-x: scroll;">
+
+                                                <!-- // mycode -->
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {%endif%}
+
+                                    <div class="panel">
+                                        <div class="acod-head">
+                                            <h6 class="acod-title"> <a href="javascript:void(0);" data-toggle="collapse"
+                                                    aria-expanded="true" data-target="#collapse12">
+                                                    Status</a> </h6>
+                                        </div>
+
+                                        <div id="collapse12" class="acod-body collapse show" data-parent="#accordion004"
+                                            style="border: grey 1px solid;">
+                                            <div class="acod-content">
+                                                <div class="row" style="flex-wrap: nowrap;">
+                                                    <div class="col-md-5">
+                                                        {%if user.is_authenticated%}
+                                                        <p class="mb-0">Owner: </p>
+                                                        <p class="mb-0">Created: </p>
+                                                        <p class="mb-0">Last Edited: </p>
+                                                        <p class="mb-0">Title: </p>
+                                                        {%else%}
+                                                        <p class="mb-0">Title: </p>
+                                                        {%endif%}
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        {%if user.is_authenticated%}
+                                                        <p class="mb-0" id="owner">....</p>
+                                                        <p class="mb-0" id="created">...</p>
+                                                        <p class="mb-0" id="lastEdited">...</p>
+                                                        <p class="mb-0"><input type="text" id="title" value="untitled">
+                                                        </p>
+                                                        {%else%}
+                                                        <p class="mb-0" id="title">untitled</p>
+                                                        {%endif%}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mt-3 text-center">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <input id="search" placeholder="Search..." required style="width: 100%;" />
+                                    </div>
+                                    <!-- <div class=" mx-0"> -->
+                                    <button class="site-button button-sm col-md-2"
+                                        onclick="getCode(document.getElementById('search').value)">Go</button>
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mt-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="lightMode" />
+                                    <label class="form-check-label" for="lightMode" onclick="lightMode()">
+                                        Light </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mt-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="darkMode"
+                                        checked onclick="darkMode()" />
+                                    <label class="form-check-label" for="darkMode">
+                                        Dark </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="m-t15 text-center">
+                                    <button class="site-button button-md radius-no" onclick="reset()" id="addNew">New <i
+                                            class="fa fa-plus-circle"></i></button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- editor -->
+                <div class="col-md-8 container mt-5">
+                    <div id="editor"></div>
+
+                    <div class="col-md-12 mt-3 text-right">
+
+                        {%if user.is_authenticated%}
+                        <div class="m-t15" id="save">
+                            <button class="site-button button-md radius-no" onclick="saveCode()"
+                                id="saver">Save</button>
+                        </div>
+                        {%endif%}
+
+                        <div class="m-t15" style="display: none;" id="saving">
+                            <button class="site-button button-md radius-no">
+                                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                Saving...
+                            </button>
+                        </div>
+
+                        <div class="m-t15" id="saved" style="display: none;">
+                            <button class="site-button button-md green radius-no" id="saved"> <img
+                                    src="{%static 'images/projects/codeShare/saved.png'%}" alt=""
+                                    style="height: 20px; width: 20px;"> Saved</button>
+                        </div>
+
+                        <div class="m-t15" id="failed" style="display: none;">
+                            <button class="site-button button-md danger radius-no" id="saved"> <img
+                                    src="{%static 'images/projects/codeShare/failed.png'%}" alt=""
+                                    style="height: 20px; width: 20px;"> Failed</button>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+{% block script %}
+<script src="{%static 'ace/build/src-noconflict/ace.js'%}"></script>
+<script src="{%static 'ace/demo/kitchen-sink/require.js'%}"></script>
+<script src="{%static 'ace/build/src-noconflict/ext-language_tools.js'%}"></script>
+<script src="{%static 'ace/build/src-noconflict/ext-settings_menu.js'%}"></script>
+<script src="{%static 'ace/build/src-noconflict/ext-themelist.js'%}"></script>
+
+<script>
+    // ------------------------------------- front end ---------------------------------
+    ace.require("ace/ext/language_tools");
+    ace.require('ace/ext/settings_menu')
+    var editor = ace.edit("editor");
+    var mode = 1
+
+
+    function darkMode() {
+        $("#blackground")[0].className = "section-full content-inner-2 bg-img-fix  wow fadeIn overlay-black-dark"
+        $("#title")[0].style = "width: 100%; background-color: black; color: white; border: none;";
+
+        let elements = $(".options");
+
+        for (let index = 0; index < elements.length; index++) {
+            const element = elements[index];
+            element.style =
+                "background-color: black; border: 2px solid grey; padding: 10px; border-radius: 10px;  color: white;";
+        }
+
+        mode = 1
+    }
+
+    function lightMode() {
+        $("#blackground")[0].className = "section-full content-inner-2 bg-img-fix  wow fadeIn"
+        $("#title")[0].style = "width: 100%; background-color: white; color: black; border: none;";
+
+        let elements = $(".options");
+
+        for (let index = 0; index < elements.length; index++) {
+            const element = elements[index];
+            element.style =
+                "background-color: white; border: 2px solid grey; padding: 10px; border-radius: 10px; color: black;"
+        }
+
+        mode = 0
+    }
+
+    function bindKey(win, mac) {
+        return {
+            win: win,
+            mac: mac
+        };
+    }
+
+
+    require.config({
+        paths: {
+            "ace": "{%static 'ace/lib/ace'%}"
+        }
+    });
+
+    require(["ace/ace", "ace/ext/themelist", "ace/ext/language_tools"], function (ace) {
+
+        var $ = document.getElementById.bind(document);
+        var dom = require("ace/lib/dom");
+        ace.config.set("enableBasicAutocompletion", true);
+
+        //add command to all new editor instances
+        require("ace/commands/default_commands").commands.push({
+            name: "Toggle Fullscreen",
+            bindKey: "F10",
+            exec: function (editor) {
+                var fullScreen = dom.toggleCssClass(document.body, "fullScreen")
+                dom.setCssClass(editor.container, "fullScreen", fullScreen)
+                editor.setAutoScrollEditorIntoView(!fullScreen)
+                if (fullScreen) document.getElementsByTagName("header")[0].style.zIndex = 0;
+                else document.getElementsByTagName("header")[0].style.zIndex = 2;
+                editor.resize()
+            }
+        })
+
+        // create first editor
+        editor = ace.edit("editor");
+        editor.renderer.setScrollMargin(10, 10);
+        editor.setOptions({
+            enableBasicAutocompletion: true,
+            enableSnippets: true,
+            enableLiveAutocompletion: true,
+            wrap: true,
+            theme: "ace/theme/cobalt",
+            mode: "ace/mode/html",
+            fontSize: "24px",
+            autoScrollEditorIntoView: true,
+            "scrollPastEnd": 0.8,
+        });
+        editor.setValue("", -1)
+    });
+
+    // settings
+    editor.commands.addCommand({
+        name: "showSettingsMenu",
+        bindKey: bindKey("Ctrl-q", "Command-q"),
+        exec: function (editor) {
+            ace.config.loadModule("ace/ext/settings_menu", function (module) {
+                module.init(editor);
+                editor.showSettingsMenu()
+            })
+        },
+        // readOnly: true
+    })
+
+
+    // shortcuts
+    require(["ace/ace"], function (ace) {
+        var editor = ace.edit("editor")
+        editor.setTheme("ace/theme/twilight")
+        editor.session.setMode("ace/mode/html")
+
+        // add command to lazy-load keybinding_menu extension
+        editor.commands.addCommand({
+            name: "showKeyboardShortcuts",
+            bindKey: {
+                win: "Ctrl-Alt-h",
+                mac: "Command-Alt-h"
+            },
+            exec: function (editor) {
+                ace.config.loadModule("ace/ext/keybinding_menu", function (module) {
+                    module.init(editor);
+                    editor.showKeyboardShortcuts()
+                })
+            }
+        })
+    })
+
+
+    function openShortcuts() {
+        editor.execCommand("showKeyboardShortcuts")
+    }
+
+    function openSettings() {
+        editor.execCommand("showSettingsMenu");
+    }
+
+    function detectMob() {
+        const toMatch = [
+            /Android/i,
+            /webOS/i,
+            /iPhone/i,
+            /iPad/i,
+            /iPod/i,
+            /BlackBerry/i,
+            /Windows Phone/i
+        ];
+
+        return toMatch.some((toMatchItem) => {
+            return navigator.userAgent.match(toMatchItem);
+        });
+    }
+
+    $(document).ready(function () {
+        editor.setOptions({
+            enableBasicAutocompletion: true,
+            enableSnippets: true,
+            enableLiveAutocompletion: true,
+            wrap: true,
+            theme: "ace/theme/cobalt",
+            mode: "ace/mode/html",
+            autoScrollEditorIntoView: true,
+            minLines: 30,
+            maxLines: 200,
+            fontSize: "24px",
+        });
+
+        if (detectMob()) {
+            $("#shortcuts")[0].style.display = "none"
+            $("#settings")[0].style.display = "none"
+        }
+
+        darkMode();
+    })
+
+    document.addEventListener("keydown", e => {
+        if (e.key == "F11" || e.key == "Escape") e.preventDefault();
+    });
+
+
+
+    // -----------------------------backend-------------------------------
+    var True = true;
+    var False = false;
+    var pkey = 0;
+
+    function clipboard(text) {
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+    }
+
+    function getSettings() {
+        return JSON.stringify(editor.getOptions())
+    }
+
+    function myCodes() {
+        const url = "{%url 'myCodes'%}"
+        $.post(url, {
+            csrfmiddlewaretoken: '{{csrf_token}}',
+        }, function (data, status) {
+            data = JSON.parse(data)
+            let html = ""
+
+            for (const key in data) {
+
+                html +=
+                    `<div class="row" style="flex-wrap: nowrap;">
+                        <div class="col-md-8">${data[key]["codeName"]}</div>
+                        <div class="col-md-1">
+                            <i class="fa fa-eye-slash codeIcon" onclick="fetchMyCode('${data[key]['codeId']}', this)"></i>
+                        </div>
+                        <div class="col-md-3">
+                            <i class="fa fa-link" value="Prince" onclick="clipboard('${data[key]['codeId']}')"></i>
+                        </div>
+                    </div>`
+            }
+
+            $("#myCodes")[0].innerHTML = html
+        }).fail(function () {
+            alert("slow internet connection")
+        })
+    }
+
+    function saveCode() {
+        $("#save")[0].style.display = "none"
+        $("#saving")[0].style.display = "block"
+
+        const url = "{%url 'saveCode'%}"
+
+        $.post(url, {
+            title: $("#title")[0].value,
+            codeSettings: getSettings(),
+            data: editor.getSession().getValue(),
+            pkey: pkey,
+            mode: mode,
+            csrfmiddlewaretoken: '{{csrf_token}}',
+        }, function (data, status) {
+            data = JSON.parse(data)
+            $("#saving")[0].style.display = "none"
+            $("#saved")[0].style.display = "block"
+            pkey = data["pkey"]
+            setTimeout(() => {
+                $("#saved")[0].style.display = "none"
+                $("#save")[0].style.display = "block"
+                $("#saver")[0].innerText = "Edit"
+            }, 4000);
+            myCodes();
+        }).fail(function () {
+            $("#saving")[0].style.display = "none"
+            $("#failed")[0].style.display = "block"
+
+            setTimeout(() => {
+                $("#failed")[0].style.display = "none"
+                $("#save")[0].style.display = "block"
+                $("#saver")[0].innerText = "Try Again"
+            }, 4000);
+        })
+    }
+
+    function getCode(pkey) {
+        const url = "{%url 'getCode'%}"
+
+        $.post(url, {
+            pkey: pkey,
+            csrfmiddlewaretoken: '{{csrf_token}}',
+        }, function (data, status) {
+            if (!data || data.length == 0) {
+                return;
+            }
+
+            data = JSON.parse(data)
+
+            if (data["error"] == "no such code") {
+                alert("no such code")
+                return;
+            }
+
+            editor.getSession().setValue(data["data"])
+
+            "{%if user.is_authenticated%}"
+            $("#owner")[0].innerText = data["owner"]
+            $("#created")[0].innerText = data["dateOfCreation"]
+            $("#lastEdited")[0].innerText = data["lastEditTime"]
+
+            if (data["owner"] != "{{user}}")
+                $("#save")[0].style.display = "none"
+            else {
+                $("#save")[0].style.display = "block"
+                $("#saver")[0].innerText = "Edit"
+            }
+
+            "{%endif%}"
+            $("#title")[0].value = data["codeName"]
+
+            editor.session.setMode(data["mode"])
+
+        })
+    }
+
+    function fetchMyCode(pid, currEle) {
+        let elements = $(".codeIcon");
+        for (let index = 0; index < elements.length; index++) {
+            const element = elements[index];
+            element.className = "fa fa-eye-slash codeIcon"
+        }
+
+        currEle.className = "fa fa-eye codeIcon";
+        getCode(pid)
+        pkey = pid;
+    }
+
+    function getLastSettings() {
+        const url = "{%url 'getLastSettings'%}"
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: {
+                csrfmiddlewaretoken: '{{csrf_token}}',
+            },
+            success: function (data) {
+                if (!data || data.length == 0) return;
+                data = JSON.parse(data)
+                editor.setOptions(data)
+            },
+            fail: function () {
+                alert("slow internet connection")
+            },
+            async: false,
+        });
+    }
+
+    function reset() {
+        pkey = 0;
+
+        "{%if user.is_authenticated %}"
+        $("#saver")[0].innerText = "Save";
+        $("#owner")[0].innerText = "{{user.username}}"
+        $("#created")[0].innerText = "Now"
+        $("#lastEdited")[0].innerText = "Now"
+        $("#title")[0].value = "untitled"
+        $("#save")[0].style.display = "block"
+        "{% endif %}"
+
+        getLastSettings();
+        editor.getSession().setValue("")
+    }
+
+    $(document).ready(function () {
+        "{%if user.is_authenticated %}"
+        myCodes()
+        "{% endif %}"
+
+        reset();
+    })
+
+    setTimeout(() => {
+        reset()
+    }, 1000);
+</script>
+{%endblock%}

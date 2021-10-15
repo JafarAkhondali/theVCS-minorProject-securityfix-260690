@@ -71,6 +71,40 @@
                             <span></span>
                             <span></span>
                         </button>
+
+                        {%if user.is_authenticated%}
+                        <div class="extra-nav">
+                            <div class="extra-cell">
+                                <div class="shop-cart navbar-right">
+                                    <button type="button" class="site-button-link cart-btn">
+                                        <i class="la la-user"></i>
+                                    </button>
+                                    <ul class="dropdown-menu cart-list">
+                                        <li class="cart-item">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <a href="javascript:void(0);">
+                                                        <img alt="" class="media-object"
+                                                            src="{%static 'images/projects/accounts/user.png'%}">
+                                                    </a>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6><a href="javascript:void(0);"
+                                                            class="media-heading">{{user.username}}</a></h6>
+                                                    <span>{{user.email}}</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="text-center">
+                                            <a class="site-button radius-xl m-r5" href="{%url 'logout'%}">Logout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>                        
+                        {%endif%}
+
+                        
                         <!-- main nav -->
                         <div class="header-nav navbar-collapse collapse justify-content-end" id="navbarNavDropdown">
                             <div class="logo-header d-md-block d-lg-none">
@@ -92,6 +126,16 @@
                                         style="max-height: 400px; overflow-y: scroll;">
                                     </ul>
                                 </li>
+
+                                {%if not user.is_authenticated%}
+                                <li onmouseover="all_tool_projects()">
+                                    <a href="{%url 'accounts'%}">Register</a>
+                                </li>
+                                <li onmouseover="all_tool_projects()">
+                                    <a href="{%url 'login'%}">Login</a>
+                                </li>
+                                {%endif%}
+
                             </ul>
                         </div>
                     </div>
