@@ -139,6 +139,7 @@ def predict(request):
         except:
             pass
 
+        
         x = scaler.transform([x])
         result = int(model.predict(x)[0][0] > 0.5)
         return HttpResponse(json.dumps({"result": result}))

@@ -251,14 +251,14 @@
         }, function (data, status) {
             data = JSON.parse(data)
             data = data["address"]
-            html = ""
+            val = ""
 
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
-                html += `<option value="` + element + `">` + element + `</option>`
+                val += `<option value="` + element + `">` + element + `</option>`
             }
 
-            $("#address")[0].innerHTML = html
+            $("#address")[0].innerHTML = val
         })
     })
 
